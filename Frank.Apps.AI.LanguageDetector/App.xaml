@@ -1,0 +1,9 @@
+﻿<Application x:Class="Frank.Apps.AI.LanguageDetector.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Frank.Apps.AI.LanguageDetector"
+             StartupUri="LanguageDetectorWindow.xaml">
+    <Application.Resources>
+
+    </Application.Resources>
+</Application>

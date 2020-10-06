@@ -1,0 +1,29 @@
+﻿<Window x:Class="Frank.Apps.AI.LanguageDetector.LanguageDetectorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Frank.Apps.AI.LanguageDetector"
+        mc:Ignorable="d"
+        Title="Language Detector"
+        Icon="icon.png"
+        Width="512" Height="400">
+    <StackPanel Height="auto">
+        <GroupBox Header="Result">
+            <StackPanel Orientation="Horizontal">
+                <GroupBox Header="Language">
+                    <Label Name="LanguageLabel" Content="?" />
+                </GroupBox>
+                <GroupBox Header="Probability">
+                    <Label Name="ProbabilityLabel"/>
+                </GroupBox>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="File input">
+            <Label Name="FileDropBox" />
+        </GroupBox>
+        <GroupBox Header="Text" Height="auto">
+            <TextBox Height="256" Name="InputTextBox" TextChanged="InputTextBox_OnTextChanged" />
+        </GroupBox>
+    </StackPanel>
+</Window>

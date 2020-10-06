@@ -1,0 +1,1 @@
+dotnet publish -r win-x64 -o Build -c Release --self-contained --source https://api.nuget.org/v3/index.json -p:PublishReadyToRun=true -p:PublishSingleFile=true
