@@ -6,10 +6,6 @@
         <LangVersion>8.0</LangVersion>
         <UseWPF>true</UseWPF>
         <Nullable>enable</Nullable>
-        <PublishTrimmed>true</PublishTrimmed>
-        <PublishReadyToRun>true</PublishReadyToRun>
-        <PublishSingleFile>true</PublishSingleFile>
-        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     </PropertyGroup>
 
     <ItemGroup>
@@ -20,6 +16,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Frank.Libraries.AI.LanguageDetection" Version="1.99.3-preview22" />
+        <PackageReference Include="YouTubeSearch" Version="2.2.4" />
     </ItemGroup>
 </Project>

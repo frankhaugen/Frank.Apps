@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.AI.LanguageDetector", "Frank.Apps.AI.LanguageDetector\Frank.Apps.AI.LanguageDetector.csproj", "{EF81AE58-E043-4DB0-9C04-E7BEA965F7D7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.YouTube", "Frank.Apps.YouTube\Frank.Apps.YouTube.csproj", "{A5858342-BDCC-4361-BEDA-6E9FFDD85D36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.Apps.BuildTool.Cli", "Frank.Apps.BuildTool.Cli\Frank.Apps.BuildTool.Cli.csproj", "{0EE8CFC7-368A-4FCE-9FCA-D91C9E07EA9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,30 @@ Global
 		{EF81AE58-E043-4DB0-9C04-E7BEA965F7D7}.Release|x64.Build.0 = Release|Any CPU
 		{EF81AE58-E043-4DB0-9C04-E7BEA965F7D7}.Release|x86.ActiveCfg = Release|Any CPU
 		{EF81AE58-E043-4DB0-9C04-E7BEA965F7D7}.Release|x86.Build.0 = Release|Any CPU
+		{A5858342-BDCC-4361-BEDA-6E9FFDD85D36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5858342-BDCC-4361-BEDA-6E9FFDD85D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5858342-BDCC-4361-BEDA-6E9FFDD85D36}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A5858342-BDCC-4361-BEDA-6E9FFDD85D36}.Debug|x64.Build.0 = Debug|Any CPU
+		{A5858342-BDCC-4361-BEDA-6E9FFDD85D36}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A5858342-BDCC-4361-BEDA-6E9FFDD85D36}.Debug|x86.Build.0 = Debug|Any CPU
+		{A5858342-BDCC-4361-BEDA-6E9FFDD85D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5858342-BDCC-4361-BEDA-6E9FFDD85D36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5858342-BDCC-4361-BEDA-6E9FFDD85D36}.Release|x64.ActiveCfg = Release|Any CPU
+		{A5858342-BDCC-4361-BEDA-6E9FFDD85D36}.Release|x64.Build.0 = Release|Any CPU
+		{A5858342-BDCC-4361-BEDA-6E9FFDD85D36}.Release|x86.ActiveCfg = Release|Any CPU
+		{A5858342-BDCC-4361-BEDA-6E9FFDD85D36}.Release|x86.Build.0 = Release|Any CPU
+		{0EE8CFC7-368A-4FCE-9FCA-D91C9E07EA9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EE8CFC7-368A-4FCE-9FCA-D91C9E07EA9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EE8CFC7-368A-4FCE-9FCA-D91C9E07EA9F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0EE8CFC7-368A-4FCE-9FCA-D91C9E07EA9F}.Debug|x64.Build.0 = Debug|Any CPU
+		{0EE8CFC7-368A-4FCE-9FCA-D91C9E07EA9F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0EE8CFC7-368A-4FCE-9FCA-D91C9E07EA9F}.Debug|x86.Build.0 = Debug|Any CPU
+		{0EE8CFC7-368A-4FCE-9FCA-D91C9E07EA9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EE8CFC7-368A-4FCE-9FCA-D91C9E07EA9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EE8CFC7-368A-4FCE-9FCA-D91C9E07EA9F}.Release|x64.ActiveCfg = Release|Any CPU
+		{0EE8CFC7-368A-4FCE-9FCA-D91C9E07EA9F}.Release|x64.Build.0 = Release|Any CPU
+		{0EE8CFC7-368A-4FCE-9FCA-D91C9E07EA9F}.Release|x86.ActiveCfg = Release|Any CPU
+		{0EE8CFC7-368A-4FCE-9FCA-D91C9E07EA9F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
