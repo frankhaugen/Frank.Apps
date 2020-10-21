@@ -1,17 +1,17 @@
 ﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using Frank.Libraries.AI.LanguageDetection;
 
 namespace Frank.Apps.AI.LanguageDetector
 {
     public partial class LanguageDetectorWindow : Window
     {
-        private readonly Libraries.AI.LanguageDetection.LanguageDetector _languageDetector;
+        private readonly LanguageDetectionService _languageDetector;
 
         public LanguageDetectorWindow()
         {
-            _languageDetector = new Libraries.AI.LanguageDetection.LanguageDetector();
-            _languageDetector.AddAllLanguages();
+            _languageDetector = new LanguageDetectionService(new LanguageDetectionOptions());
             InitializeComponent();
         }
 
@@ -26,9 +26,9 @@ namespace Frank.Apps.AI.LanguageDetector
             {
                 var languages = _languageDetector.DetectAll(InputTextBox.Text);
                 var language = languages.OrderByDescending(x => x.Probability).FirstOrDefault();
-                if (language != null && language.Probability > 50)
+                if (language != null && language.Probability > 0.5)
                 {
-                    LanguageLabel.Content = language.Language;
+                    LanguageLabel.Content = language.Name;
                     ProbabilityLabel.Content = language.Probability;
                 }
                 else

@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:Frank.Apps.AI.LanguageDetector"
         mc:Ignorable="d"
         Title="Language Detector"
-        Icon="icon.png"
         Width="512" Height="400">
     <StackPanel Height="auto">
         <GroupBox Header="Result">
