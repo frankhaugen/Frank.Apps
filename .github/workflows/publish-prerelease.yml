@@ -1,0 +1,16 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on:
+  release:
+    types: [prereleased]
+
+jobs:
+  testrun:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Testrun
+      uses: martialonline/workflow-status@master

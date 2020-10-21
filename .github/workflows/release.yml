@@ -1,0 +1,14 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Release
+
+on:
+  release:
+    types: [released]
+
+jobs:
+  testrun:
+    runs-on: ubuntu-latest
+    steps:
+    - name: ProdRun
+      uses: martialonline/workflow-status@master
