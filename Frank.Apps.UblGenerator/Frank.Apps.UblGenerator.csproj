@@ -8,11 +8,4 @@
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Frank.Libraries.AI.LanguageDetection" Version="1.99.3-preview31" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="Properties\" />
-    </ItemGroup>
 </Project>

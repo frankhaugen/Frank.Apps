@@ -14,7 +14,7 @@ namespace Frank.Apps.BuildTool.Cli
 
             var msBuildTool = new MsBuildTool();
 
-            }
+        }
 
         // dotnet publish -r win-x64 -o "..\Builds" -c Release --self-contained --source https://api.nuget.org/v3/index.json -p:PublishReadyToRun=true -p:PublishSingleFile=true -p:PublishTrimmed=true
     }
