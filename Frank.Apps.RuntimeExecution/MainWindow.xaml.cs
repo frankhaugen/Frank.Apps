@@ -20,8 +20,15 @@ namespace Frank.Apps.RuntimeExecution
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var code = Editor.Text;
-            var result = await _codeExecuter.RoslynScriptingAsync(code);
-            MessageBox.Show(result);
+            try
+            {
+                var result = await _codeExecuter.RoslynScriptingAsync(code);
+                MessageBox.Show(result);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, exception.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+            }
         }
     }
 }
