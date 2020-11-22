@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
@@ -16,12 +17,14 @@ namespace Frank.Apps.RuntimeExecution
                 .AddImports("System");
         }
 
-        public async Task<string?> RoslynScriptingAsync(string? input = null)
+        public async Task<string?> RoslynScriptingAsync(string? input = null, params Assembly[] assemblies)
         {
             var methodCode = @"return nameof(Exception);";
 
             if (input is not null)
                 methodCode = input;
+
+            _scriptOptions.AddReferences(assemblies);
 
             var script = CSharpScript.Create(methodCode, _scriptOptions);
 
