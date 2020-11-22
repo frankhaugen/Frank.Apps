@@ -21,12 +21,12 @@ namespace Frank.Apps.UblGenerator
             //var grid = new PermssionRowGrid(5, 5);
             var grid = new Grid();
 
-            foreach (var columnDefinition in getColumnDefinitions(5))
+            foreach (var columnDefinition in getColumnDefinitions(40))
             {
                 grid.ColumnDefinitions.Add(columnDefinition);
             }
 
-            foreach (var rowDefinition in getRowDefinitions(5))
+            foreach (var rowDefinition in getRowDefinitions(40))
             {
                 grid.RowDefinitions.Add(rowDefinition);
             }

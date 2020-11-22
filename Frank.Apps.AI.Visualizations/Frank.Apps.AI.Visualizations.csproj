@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UseWPF>true</UseWPF>
+        <StartupObject>Frank.Apps.AI.Visualizations.Program</StartupObject>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Accord.MachineLearning" Version="3.8.0" />
+        <PackageReference Include="Frank.Libraries.AI.LanguageDetection" Version="2.0.0" />
+        <PackageReference Include="Frank.Libraries.Brreg" Version="2.0.0" />
+        <PackageReference Include="Microsoft.Data.Analysis" Version="0.4.0" />
+        <PackageReference Include="Microsoft.ML" Version="1.5.2" />
+        <PackageReference Include="ScottPlot.WPF" Version="4.0.42" />
+        <PackageReference Include="SimpleInjector" Version="5.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+
+        <Folder Include="Commands\" />
+    </ItemGroup>
+
+</Project>

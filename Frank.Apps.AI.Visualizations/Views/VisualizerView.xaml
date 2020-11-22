@@ -1,0 +1,22 @@
+﻿<Window x:Class="Frank.Apps.AI.Visualizations.Views.VisualizerView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Frank.Apps.AI.Visualizations.Views"
+        mc:Ignorable="d"
+        Title="VisualizerView" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.075*" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Button Content="Change" Grid.Row="0" Command="{Binding ChangePlot}" />
+        <ContentControl Name="Visualizer" Content="{Binding Plot}" Grid.Row="1" />
+    </Grid>
+</Window>

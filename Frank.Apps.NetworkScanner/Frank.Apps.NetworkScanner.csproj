@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>dotnet-Frank.Apps.NetworkScanner-5100B66B-91FD-43B1-AD0D-F7C9CFC0D948</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ConsoleTableExt" Version="2.0.3" />
+    <PackageReference Include="IPNetwork2" Version="2.5.226" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0-rc.2.20475.5" />
+    <PackageReference Include="Network" Version="6.2.4.21" />
+    <PackageReference Include="Texnomic.NMap.Scanner" Version="1.0.0" />
+  </ItemGroup>
+</Project>
