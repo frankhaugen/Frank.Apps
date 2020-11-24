@@ -9,6 +9,7 @@ namespace Frank.Apps.Snake
         {
             IsAlive = true;
             Body = new Queue<Vector2>();
+            Direction = Direction.Right;
         }
 
         public bool IsAlive { get; set; }
@@ -16,7 +17,7 @@ namespace Frank.Apps.Snake
         public Vector2 TargetPosition { get; set; }
         public Queue<Vector2> Body { get; }
         public Speed Speed { get; set; }
-
+        public Direction Direction { get; set; }
         public int Length { get; set; }
     }
 }

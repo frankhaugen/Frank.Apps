@@ -4,12 +4,12 @@
     {
         HolyShitFuck = 1,
         RidiculouslyFast = 100,
-        SuperFast = 500,
-        Fast = 750,
-        Comfortable = 1000,
-        Slow = 1250,
-        VerySlow = 1500,
-        PokemonGoSlow = 2000,
-        DMV = 3000
+        SuperFast = 175,
+        Fast = 250,
+        Comfortable = 500,
+        Slow = 750,
+        VerySlow = 1000,
+        PokemonGoSlow = 1250,
+        DMV = 1500
     }
 }
