@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Frank.Apps.RockPaperScissor
 {
@@ -13,12 +12,13 @@ namespace Frank.Apps.RockPaperScissor
             InitializeComponent();
         }
 
-        private Action MachineAction()
-        {
-            var random = new Random();
+        //private Action MachineAction()
+        //{
+        //    var random = new Random();
 
+        //    return random.Next();
 
-        }
+        //}
     }
 
     public static class EnumExtensions

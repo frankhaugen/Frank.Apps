@@ -28,8 +28,8 @@ namespace Frank.Apps.Snake
         {
             InitializeComponent();
 
-            BoardWidth = 40;
-            BoardHeight = 40;
+            BoardWidth = 100;
+            BoardHeight = 100;
             Paused = true;
 
             var generator = new BoardGenerator();
@@ -156,6 +156,13 @@ namespace Frank.Apps.Snake
             {
                 Paused = true;
                 MessageBox.Show("CRASH!!!");
+                Application.Current.Shutdown();
+                return;
+            }
+            if (_snake.Body.Contains(vector))
+            {
+                Paused = true;
+                MessageBox.Show("FAIL!!!");
                 Application.Current.Shutdown();
                 return;
             }
