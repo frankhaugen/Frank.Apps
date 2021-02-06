@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Frank.Libraries.AzureStorage;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -19,6 +16,9 @@ namespace Frank.Apps.AzureStorage
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<Worker>();
+                    services.AddSingleton<BlobService>();
+
+                    services.Configure<BlobConfiguration>(hostContext.Configuration.GetSection(nameof(BlobConfiguration)));
                 });
     }
 }

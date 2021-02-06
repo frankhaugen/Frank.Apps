@@ -17,6 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="MusicXml.NET" Version="2.0.1" />
         <PackageReference Include="YouTubeSearch" Version="2.2.4" />
     </ItemGroup>
 </Project>
