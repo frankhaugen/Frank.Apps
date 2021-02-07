@@ -18,10 +18,10 @@ namespace Frank.Apps.StarMap.Repositories
 
 
 
-        public IEnumerable<Star> GetEnumerable(DirectoryInfo directory)
-        {
+        //public IEnumerable<Star> GetEnumerable(DirectoryInfo directory)
+        //{
 
-        }
+        //}
 
         public IEnumerable<Star> GetEnumerable(string csvString)
         {

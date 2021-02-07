@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using CsvHelper.Configuration;
 using Frank.Apps.StarMap.Models;
-using Path = System.IO.Path;
 
 namespace Frank.Apps.StarMap
 {
@@ -19,7 +17,7 @@ namespace Frank.Apps.StarMap
 
         public MainWindow()
         {
-            _stars = GetEnumerable(File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Assets", "Stars.csv")));
+            //_stars = GetEnumerable(File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Assets", "Stars.csv")));
             _canvas = new Canvas();
 
             CreateScene();

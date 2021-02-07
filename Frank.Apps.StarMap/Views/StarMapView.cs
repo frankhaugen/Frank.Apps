@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -9,7 +10,23 @@ namespace Frank.Apps.StarMap.Views
 {
     public class StarMapView : Page
     {
+
+        private Canvas Get()
+        {
+            Canvas canvas = new Canvas();
+            canvas.Name = "gridPattern";
+            canvas.VerticalAlignment = ((VerticalAlignment)(TypeDescriptor.GetConverter(typeof(VerticalAlignment)).ConvertFromInvariantString("Center")));
+            canvas.HorizontalAlignment = ((HorizontalAlignment)(TypeDescriptor.GetConverter(typeof(HorizontalAlignment)).ConvertFromInvariantString("Center")));
+            canvas.Background = ((Brush)(TypeDescriptor.GetConverter(typeof(Brush)).ConvertFromInvariantString("Blue")));
+            canvas.Height = 1D;
+            canvas.Width = 1D;
+            canvas.Visibility = ((Visibility)(TypeDescriptor.GetConverter(typeof(Visibility)).ConvertFromInvariantString("Visible")));
+            return canvas;
+        }
+
     }
+
+
 
     public partial class MainWindow : Window
     {
@@ -18,10 +35,10 @@ namespace Frank.Apps.StarMap.Views
             //InitializeComponent();
 
             //working and finalized functions code
-            GetDecSeparator(); //Initiating the function GetComma
+            //GetDecSeparator(); //Initiating the function GetComma
             //funtions undergoing testing and development
             TestAddLine(); //testing
-            uiScaleSlider.MouseDoubleClick += new MouseButtonEventHandler(RestoreScalingFactor); //zoom func
+            //uiScaleSlider.MouseDoubleClick += new MouseButtonEventHandler(RestoreScalingFactor); //zoom func
         }
 
         //Funtion to add stars (ellipses) to the XAML canvas 'starfield', from the 'stars_db' database
@@ -54,7 +71,7 @@ namespace Frank.Apps.StarMap.Views
             Z_ly = Z_ly * 3.26163344 * 10;
 
             //Get star classifications using dedicated function
-            int StarType = DetermineStarType(Spectrum_str);
+            int StarType = Int32.MaxValue;// DetermineStarType(Spectrum_str);
 
             //Ellipse size and color settings based on star type
             int HeightWidthValTmp = 0;
