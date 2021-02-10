@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -23,6 +24,29 @@ namespace Frank.Apps.StarMap.Views
             canvas.Visibility = ((Visibility)(TypeDescriptor.GetConverter(typeof(Visibility)).ConvertFromInvariantString("Visible")));
             return canvas;
         }
+
+
+        private Slider Get2()
+        {
+            Slider slider = new Slider();
+            slider.Name = "uiScaleSlider";
+            slider.HorizontalAlignment = ((HorizontalAlignment)(TypeDescriptor.GetConverter(typeof(HorizontalAlignment)).ConvertFromInvariantString("Right")));
+            slider.VerticalAlignment = ((VerticalAlignment)(TypeDescriptor.GetConverter(typeof(VerticalAlignment)).ConvertFromInvariantString("Bottom")));
+            slider.ToolTip = "Determines the UI scale factor. Double-click to revert scaling back to 100%.";
+            slider.Height = 100D;
+            slider.Value = 1D;
+            slider.Minimum = 0.1D;
+            slider.Maximum = 5D;
+            slider.Orientation = ((Orientation)(TypeDescriptor.GetConverter(typeof(Orientation)).ConvertFromInvariantString("Vertical")));
+            slider.Ticks = ((DoubleCollection)(TypeDescriptor.GetConverter(typeof(DoubleCollection)).ConvertFromInvariantString("1")));
+            slider.IsSnapToTickEnabled = ((Boolean)(TypeDescriptor.GetConverter(typeof(Boolean)).ConvertFromInvariantString("False")));
+            slider.TickPlacement = ((TickPlacement)(TypeDescriptor.GetConverter(typeof(TickPlacement)).ConvertFromInvariantString("BottomRight")));
+            slider.AutoToolTipPlacement = ((AutoToolTipPlacement)(TypeDescriptor.GetConverter(typeof(AutoToolTipPlacement)).ConvertFromInvariantString("BottomRight")));
+            slider.AutoToolTipPrecision = ((Int32)(TypeDescriptor.GetConverter(typeof(Int32)).ConvertFromInvariantString("2")));
+            slider.Margin = ((Thickness)(TypeDescriptor.GetConverter(typeof(Thickness)).ConvertFromInvariantString("0,0,7,31")));
+            return slider;
+        }
+
 
     }
 
