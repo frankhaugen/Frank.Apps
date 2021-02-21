@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>dotnet-Frank.Apps.QuickEngine-899F302D-D0DF-4DEF-BAEA-03913A9EC912</UserSecretsId>
+    <UserSecretsId>dotnet-Frank.Apps.SolutionBuilder-6E569A9F-B3AC-44BE-93A5-B2EB74E22E3E</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
