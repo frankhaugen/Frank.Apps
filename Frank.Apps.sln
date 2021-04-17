@@ -56,7 +56,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.SolutionBuilder"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.Scheduler", "Frank.Apps.Scheduler\Frank.Apps.Scheduler.csproj", "{467891BE-7997-463F-B904-8738D4945D8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.Apps.Installer", "Frank.Apps.Installer\Frank.Apps.Installer.csproj", "{C10B036E-9148-4328-9D4B-D63C5950BF7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.Installer", "Frank.Apps.Installer\Frank.Apps.Installer.csproj", "{C10B036E-9148-4328-9D4B-D63C5950BF7E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.InputDetector", "Frank.Apps.InputDetector\Frank.Apps.InputDetector.csproj", "{0E58702C-7DDB-4C6E-908A-3FE571E25456}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.TestApi", "Frank.Apps.TestApi\Frank.Apps.TestApi.csproj", "{FE8AEE52-A20D-493C-81C3-AD0973944742}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -368,6 +372,30 @@ Global
 		{C10B036E-9148-4328-9D4B-D63C5950BF7E}.Release|x64.Build.0 = Release|Any CPU
 		{C10B036E-9148-4328-9D4B-D63C5950BF7E}.Release|x86.ActiveCfg = Release|Any CPU
 		{C10B036E-9148-4328-9D4B-D63C5950BF7E}.Release|x86.Build.0 = Release|Any CPU
+		{0E58702C-7DDB-4C6E-908A-3FE571E25456}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E58702C-7DDB-4C6E-908A-3FE571E25456}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E58702C-7DDB-4C6E-908A-3FE571E25456}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0E58702C-7DDB-4C6E-908A-3FE571E25456}.Debug|x64.Build.0 = Debug|Any CPU
+		{0E58702C-7DDB-4C6E-908A-3FE571E25456}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0E58702C-7DDB-4C6E-908A-3FE571E25456}.Debug|x86.Build.0 = Debug|Any CPU
+		{0E58702C-7DDB-4C6E-908A-3FE571E25456}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E58702C-7DDB-4C6E-908A-3FE571E25456}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E58702C-7DDB-4C6E-908A-3FE571E25456}.Release|x64.ActiveCfg = Release|Any CPU
+		{0E58702C-7DDB-4C6E-908A-3FE571E25456}.Release|x64.Build.0 = Release|Any CPU
+		{0E58702C-7DDB-4C6E-908A-3FE571E25456}.Release|x86.ActiveCfg = Release|Any CPU
+		{0E58702C-7DDB-4C6E-908A-3FE571E25456}.Release|x86.Build.0 = Release|Any CPU
+		{FE8AEE52-A20D-493C-81C3-AD0973944742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE8AEE52-A20D-493C-81C3-AD0973944742}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE8AEE52-A20D-493C-81C3-AD0973944742}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FE8AEE52-A20D-493C-81C3-AD0973944742}.Debug|x64.Build.0 = Debug|Any CPU
+		{FE8AEE52-A20D-493C-81C3-AD0973944742}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FE8AEE52-A20D-493C-81C3-AD0973944742}.Debug|x86.Build.0 = Debug|Any CPU
+		{FE8AEE52-A20D-493C-81C3-AD0973944742}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE8AEE52-A20D-493C-81C3-AD0973944742}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE8AEE52-A20D-493C-81C3-AD0973944742}.Release|x64.ActiveCfg = Release|Any CPU
+		{FE8AEE52-A20D-493C-81C3-AD0973944742}.Release|x64.Build.0 = Release|Any CPU
+		{FE8AEE52-A20D-493C-81C3-AD0973944742}.Release|x86.ActiveCfg = Release|Any CPU
+		{FE8AEE52-A20D-493C-81C3-AD0973944742}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
