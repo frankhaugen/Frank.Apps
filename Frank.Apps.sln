@@ -62,7 +62,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.InputDetector", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.TestApi", "Frank.Apps.TestApi\Frank.Apps.TestApi.csproj", "{FE8AEE52-A20D-493C-81C3-AD0973944742}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.Apps.Sudoku", "Frank.Apps.Sudoku\Frank.Apps.Sudoku.csproj", "{0798F889-E99B-4992-BA4B-9AFB67F4D48F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.Sudoku", "Frank.Apps.Sudoku\Frank.Apps.Sudoku.csproj", "{0798F889-E99B-4992-BA4B-9AFB67F4D48F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.SecurityCam", "Frank.Apps.SecurityCam\Frank.Apps.SecurityCam.csproj", "{66EA97C2-34EE-4931-A062-226F36E992E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -410,6 +412,18 @@ Global
 		{0798F889-E99B-4992-BA4B-9AFB67F4D48F}.Release|x64.Build.0 = Release|Any CPU
 		{0798F889-E99B-4992-BA4B-9AFB67F4D48F}.Release|x86.ActiveCfg = Release|Any CPU
 		{0798F889-E99B-4992-BA4B-9AFB67F4D48F}.Release|x86.Build.0 = Release|Any CPU
+		{66EA97C2-34EE-4931-A062-226F36E992E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66EA97C2-34EE-4931-A062-226F36E992E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66EA97C2-34EE-4931-A062-226F36E992E8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{66EA97C2-34EE-4931-A062-226F36E992E8}.Debug|x64.Build.0 = Debug|Any CPU
+		{66EA97C2-34EE-4931-A062-226F36E992E8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{66EA97C2-34EE-4931-A062-226F36E992E8}.Debug|x86.Build.0 = Debug|Any CPU
+		{66EA97C2-34EE-4931-A062-226F36E992E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66EA97C2-34EE-4931-A062-226F36E992E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66EA97C2-34EE-4931-A062-226F36E992E8}.Release|x64.ActiveCfg = Release|Any CPU
+		{66EA97C2-34EE-4931-A062-226F36E992E8}.Release|x64.Build.0 = Release|Any CPU
+		{66EA97C2-34EE-4931-A062-226F36E992E8}.Release|x86.ActiveCfg = Release|Any CPU
+		{66EA97C2-34EE-4931-A062-226F36E992E8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <UseWpf>true</UseWpf>
+        <UserSecretsId>dotnet-Frank.Apps.SecurityCam-C3330A6B-B50F-48DE-896A-6477CCDAB060</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="WPFMediaKit" Version="2.2.0" />
+        <!--<PackageReference Include="Accord.Video.DirectShow" Version="3.8.0" />-->
+        <!--<PackageReference Include="AForge.Controls" Version="2.2.5" />
+        <PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />-->
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+        <!--<PackageReference Include="System.Drawing.Common" Version="4.7.0" />-->
+        <!--<PackageReference Include="OpenCvSharp4.Windows" Version="4.5.2.20210404" />-->
+        <!--<PackageReference Include="Vlc.DotNet.Wpf" Version="3.1.0" />-->
+    </ItemGroup>
+</Project>
