@@ -2,7 +2,9 @@
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <LangVersion>9.0</LangVersion>
+        <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
         <StartupObject>Frank.Apps.AI.Visualizations.Program</StartupObject>
     </PropertyGroup>

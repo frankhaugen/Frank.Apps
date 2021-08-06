@@ -52,9 +52,9 @@ namespace Frank.Apps.StarMap.Views
 
 
 
-    public partial class MainWindow : Window
+    public partial class TestPage : Page
     {
-        public MainWindow()
+        public TestPage()
         {
             //InitializeComponent();
 

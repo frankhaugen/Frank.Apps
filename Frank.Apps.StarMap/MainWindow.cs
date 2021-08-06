@@ -12,7 +12,7 @@ namespace Frank.Apps.StarMap
     public class MainWindow : Window
     {
         private readonly IEnumerable<Star> _stars;
-        private readonly CsvConfiguration _options = new CsvConfiguration(CultureInfo.InvariantCulture, delimiter: ";", hasHeaderRecord: true);
+        private readonly CsvConfiguration _options = new CsvConfiguration(CultureInfo.InvariantCulture);
         private Canvas _canvas;
 
         public MainWindow()

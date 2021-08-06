@@ -6,9 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cronos" Version="0.7.0" />
+    <PackageReference Include="Cronos" Version="0.7.1" />
     <PackageReference Include="CronQuery" Version="2.0.0" />
-    <PackageReference Include="Frank.Libraries.Json" Version="3.0.0" />
+    <PackageReference Include="Frank.Libraries.Json" Version="3.1.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
   </ItemGroup>
 </Project>

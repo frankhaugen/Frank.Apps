@@ -1,16 +1,12 @@
-﻿using System;
+﻿using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using AForge.Controls;
-using AForge.Video;
-using AForge.Video.DirectShow;
+using OpenCvSharp;
+using OpenCvSharp.Extensions;
+using OpenCvSharp.WpfExtensions;
 using Image = System.Windows.Controls.Image;
 using Window = System.Windows.Window;
 
@@ -18,22 +14,13 @@ namespace Frank.Apps.SecurityCam
 {
     public class MainWindow : Window
     {
-
-
-
-        VideoCaptureDevice LocalWebCam;
-        public FilterInfoCollection LoaclWebCamsCollection;
-
-
-
         private Image _image = new Image();
-        private Frame _frame = new Frame();
-        private ImageSource _imageSource;
         private Button _button = new Button();
-        private bool _isRunning = true;
-        private FilterInfoCollection _devices;
-        private VideoSourcePlayer _player = new VideoSourcePlayer();
 
+        private readonly BackgroundWorker worker = new BackgroundWorker();
+
+        private readonly VideoCapture capture;
+        private readonly CascadeClassifier cascadeClassifier;
         public MainWindow()
         {
             Width = 512;
@@ -41,175 +28,76 @@ namespace Frank.Apps.SecurityCam
 
             var stringBuilder = new StringBuilder();
             var stackpanel = new StackPanel();
-
-            //var ffff = new VlcVideoSourceProvider(Dispatcher.CurrentDispatcher).VideoSource;
-
-            //var videoControl = new VlcControl() { Width = 512, Height = 445 };
-            //videoControl.
-            _devices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-
-            if (_devices.Count != 0)
-            {
-                //add all devices to combo
-                foreach (FilterInfo device in _devices)
-                {
-                    stringBuilder.AppendLine($"{device.Name} - {device.MonikerString}");
-                    //comboBox1.Items.Add(device.Name);
-                    //_logger.LogInformation(device.MonikerString + " - " + device.Name);
-                }
-            }
-            else
-            {
-                //comboBox1.Items.Add("No DirectShow devices found");
-            }
-
-            //comboBox1.SelectedIndex = 0;
-
-            //stackpanel.Children.Add(webcam);
-            //stackpanel.Children.Add(videoControl);
-
-
-
-            var label = new Label() { Content = stringBuilder.ToString(), Height = 445, Width = 512 };
-
-
             stackpanel.Children.Add(_image);
             stackpanel.Children.Add(_button);
 
             Content = stackpanel;
 
             _button.Content = "Start";
-            _button.Click += OnLoaded;
-            //_button.Click += _button_Click;
-            //Closing += (sender, args) => _isRunning = false;
+            //_button.Click += (sender, args) =>;
 
             _image.Width = 512;
             _image.Height = 445;
-            //Player
-
-            //Loaded += OnLoaded;
 
 
-            //_image.Source = _imageSource;
+            capture = new VideoCapture();
+            cascadeClassifier = new CascadeClassifier("haarcascade_frontalface_default.xml");
+
+            worker.DoWork += backgroundWorker1_DoWork;
+            worker.ProgressChanged += backgroundWorker1_ProgressChanged;
+
+            Loaded += OnLoaded;
+            Closing += OnClosing;
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            LoaclWebCamsCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            LocalWebCam = new VideoCaptureDevice(LoaclWebCamsCollection[0].MonikerString);
-            LocalWebCam.NewFrame += new NewFrameEventHandler(Cam_NewFrame);
-
-            LocalWebCam.Start();
-        }
-
-        void Cam_NewFrame(object sender, NewFrameEventArgs eventArgs)
-        {
-            try
+            capture.Open(0, VideoCaptureAPIs.ANY);
+            if (!capture.IsOpened())
             {
-                System.Drawing.Image img = (Bitmap)eventArgs.Frame.Clone();
-
-                MemoryStream ms = new MemoryStream();
-                img.Save(ms, ImageFormat.Bmp);
-                ms.Seek(0, SeekOrigin.Begin);
-                BitmapImage bi = new BitmapImage();
-                bi.BeginInit();
-                bi.StreamSource = ms;
-                bi.EndInit();
-
-                bi.Freeze();
-                Dispatcher.BeginInvoke(new ThreadStart(delegate
-                {
-                    _image.Source = bi;
-                }));
+                MessageBox.Show("MOW!!");
+                Close();
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
+            //ClientSize = new System.Drawing.Size(capture.FrameWidth, capture.FrameHeight);
+
+            worker.RunWorkerAsync();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        private async void _button_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void OnClosing(object sender, CancelEventArgs e)
         {
-            //var capture = new VideoCapture(0);
-            //var window = new OpenCvSharp.Window("El Bruno – OpenCVSharp demo");
-
-            //var page = new Page();
-
-            //_frame.Content = page;
-
-            //var image = new Mat();
-            //while (_isRunning)
-            //{
-            //    capture.Read(image);
-            //    if (image.Empty()) break;
-            //    window.ShowImage(image);
-            //    if (Cv2.WaitKey(1) == 113) // Q
-            //        break;
-            //}
+            //worker..CancelAsync();
+            capture.Dispose();
+            cascadeClassifier.Dispose();
         }
 
-        private void OpenCamera()
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            try
-            {
-                var usbcamera = _devices[0];
+            var bgWorker = (BackgroundWorker)sender;
 
-                var videoDevice = new VideoCaptureDevice(_devices[Convert.ToInt32(usbcamera)].MonikerString);
-                var snapshotCapabilities = videoDevice.SnapshotCapabilities;
-                if (snapshotCapabilities.Length == 0)
+            while (!bgWorker.CancellationPending)
+            {
+                using (var frameMat = capture.RetrieveMat())
                 {
-                    //MessageBox.Show("Camera Capture Not supported");
+                    var rects = cascadeClassifier.DetectMultiScale(frameMat, 1.1, 5, HaarDetectionTypes.ScaleImage, new OpenCvSharp.Size(30, 30));
+                    if (rects.Length > 0)
+                    {
+                        Cv2.Rectangle(frameMat, rects[0], Scalar.Red);
+                    }
+
+                    var frameBitmap = BitmapConverter.ToBitmap(frameMat);
+                    bgWorker.ReportProgress(0, frameBitmap);
                 }
-
-                OpenVideoSource(videoDevice);
+                Thread.Sleep(100);
             }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.ToString());
-            }
-
         }
 
-
-
-        public void OpenVideoSource(IVideoSource source)
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            try
-            {
-                // set busy cursor
-                //this.Cursor = Cursors.WaitCursor;
-
-                // stop current video source
-                //CloseCurrentVideoSource();
-
-                // start new video source
-                _player.VideoSource = source;
-                //_player.Start();
-
-                // reset stop watch
-                //stopWatch = null;
-
-
-                //this.Cursor = Cursors.Default;
-            }
-            catch { }
+            var frameBitmap = (Bitmap)e.UserState;
+            //_image..Image?.Dispose();
+            _image.Source = frameBitmap?.ToBitmapSource();
         }
     }
 }

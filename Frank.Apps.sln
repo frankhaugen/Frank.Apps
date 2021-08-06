@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30523.141
+VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.AI.LanguageDetector", "Frank.Apps.AI.LanguageDetector\Frank.Apps.AI.LanguageDetector.csproj", "{EF81AE58-E043-4DB0-9C04-E7BEA965F7D7}"
 EndProject
@@ -40,8 +40,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.MusicXmlTool", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.QuickEngine", "Frank.Apps.QuickEngine\Frank.Apps.QuickEngine.csproj", "{88C6BFBC-00A6-4C3A-BC8A-BE17FA66A62F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.WindowSpawner", "Frank.Apps.WindowSpawner\Frank.Apps.WindowSpawner.csproj", "{4973E7B3-D684-47A9-A36A-6F2E52939EF3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.FormSpawner", "Frank.Apps.FormSpawner\Frank.Apps.FormSpawner.csproj", "{6753FC89-FE47-4364-92DF-2AAEFD5CBCA9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.DependencyInjectionWpf", "Frank.Apps.DependencyInjectionWpf\Frank.Apps.DependencyInjectionWpf.csproj", "{05CE2B99-0F34-4A8C-A138-9467AA0256BE}"
@@ -65,6 +63,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.Sudoku", "Frank.Apps.Sudoku\Frank.Apps.Sudoku.csproj", "{0798F889-E99B-4992-BA4B-9AFB67F4D48F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.SecurityCam", "Frank.Apps.SecurityCam\Frank.Apps.SecurityCam.csproj", "{66EA97C2-34EE-4931-A062-226F36E992E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.CodeGenerationExperiment", "Frank.Apps.CodeGenerationExperiment\Frank.Apps.CodeGenerationExperiment.csproj", "{0503ABBE-15D4-4A60-97B3-9ACC6E1A8FD9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.IrcTerminalClient", "Frank.Apps.IrcTerminalClient\Frank.Apps.IrcTerminalClient.csproj", "{C0E020B8-B8F6-4E5A-B1AB-938E511ACDD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -268,18 +270,6 @@ Global
 		{88C6BFBC-00A6-4C3A-BC8A-BE17FA66A62F}.Release|x64.Build.0 = Release|Any CPU
 		{88C6BFBC-00A6-4C3A-BC8A-BE17FA66A62F}.Release|x86.ActiveCfg = Release|Any CPU
 		{88C6BFBC-00A6-4C3A-BC8A-BE17FA66A62F}.Release|x86.Build.0 = Release|Any CPU
-		{4973E7B3-D684-47A9-A36A-6F2E52939EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4973E7B3-D684-47A9-A36A-6F2E52939EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4973E7B3-D684-47A9-A36A-6F2E52939EF3}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{4973E7B3-D684-47A9-A36A-6F2E52939EF3}.Debug|x64.Build.0 = Debug|Any CPU
-		{4973E7B3-D684-47A9-A36A-6F2E52939EF3}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{4973E7B3-D684-47A9-A36A-6F2E52939EF3}.Debug|x86.Build.0 = Debug|Any CPU
-		{4973E7B3-D684-47A9-A36A-6F2E52939EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4973E7B3-D684-47A9-A36A-6F2E52939EF3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4973E7B3-D684-47A9-A36A-6F2E52939EF3}.Release|x64.ActiveCfg = Release|Any CPU
-		{4973E7B3-D684-47A9-A36A-6F2E52939EF3}.Release|x64.Build.0 = Release|Any CPU
-		{4973E7B3-D684-47A9-A36A-6F2E52939EF3}.Release|x86.ActiveCfg = Release|Any CPU
-		{4973E7B3-D684-47A9-A36A-6F2E52939EF3}.Release|x86.Build.0 = Release|Any CPU
 		{6753FC89-FE47-4364-92DF-2AAEFD5CBCA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6753FC89-FE47-4364-92DF-2AAEFD5CBCA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6753FC89-FE47-4364-92DF-2AAEFD5CBCA9}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -424,6 +414,30 @@ Global
 		{66EA97C2-34EE-4931-A062-226F36E992E8}.Release|x64.Build.0 = Release|Any CPU
 		{66EA97C2-34EE-4931-A062-226F36E992E8}.Release|x86.ActiveCfg = Release|Any CPU
 		{66EA97C2-34EE-4931-A062-226F36E992E8}.Release|x86.Build.0 = Release|Any CPU
+		{0503ABBE-15D4-4A60-97B3-9ACC6E1A8FD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0503ABBE-15D4-4A60-97B3-9ACC6E1A8FD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0503ABBE-15D4-4A60-97B3-9ACC6E1A8FD9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0503ABBE-15D4-4A60-97B3-9ACC6E1A8FD9}.Debug|x64.Build.0 = Debug|Any CPU
+		{0503ABBE-15D4-4A60-97B3-9ACC6E1A8FD9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0503ABBE-15D4-4A60-97B3-9ACC6E1A8FD9}.Debug|x86.Build.0 = Debug|Any CPU
+		{0503ABBE-15D4-4A60-97B3-9ACC6E1A8FD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0503ABBE-15D4-4A60-97B3-9ACC6E1A8FD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0503ABBE-15D4-4A60-97B3-9ACC6E1A8FD9}.Release|x64.ActiveCfg = Release|Any CPU
+		{0503ABBE-15D4-4A60-97B3-9ACC6E1A8FD9}.Release|x64.Build.0 = Release|Any CPU
+		{0503ABBE-15D4-4A60-97B3-9ACC6E1A8FD9}.Release|x86.ActiveCfg = Release|Any CPU
+		{0503ABBE-15D4-4A60-97B3-9ACC6E1A8FD9}.Release|x86.Build.0 = Release|Any CPU
+		{C0E020B8-B8F6-4E5A-B1AB-938E511ACDD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0E020B8-B8F6-4E5A-B1AB-938E511ACDD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0E020B8-B8F6-4E5A-B1AB-938E511ACDD9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C0E020B8-B8F6-4E5A-B1AB-938E511ACDD9}.Debug|x64.Build.0 = Debug|Any CPU
+		{C0E020B8-B8F6-4E5A-B1AB-938E511ACDD9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C0E020B8-B8F6-4E5A-B1AB-938E511ACDD9}.Debug|x86.Build.0 = Debug|Any CPU
+		{C0E020B8-B8F6-4E5A-B1AB-938E511ACDD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0E020B8-B8F6-4E5A-B1AB-938E511ACDD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0E020B8-B8F6-4E5A-B1AB-938E511ACDD9}.Release|x64.ActiveCfg = Release|Any CPU
+		{C0E020B8-B8F6-4E5A-B1AB-938E511ACDD9}.Release|x64.Build.0 = Release|Any CPU
+		{C0E020B8-B8F6-4E5A-B1AB-938E511ACDD9}.Release|x86.ActiveCfg = Release|Any CPU
+		{C0E020B8-B8F6-4E5A-B1AB-938E511ACDD9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
