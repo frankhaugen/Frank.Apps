@@ -18,7 +18,7 @@ namespace Frank.Apps.StarMap
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             using var scope = _serviceProvider.CreateScope();
-            var window = scope.ServiceProvider.GetRequiredService<MainWindow>();
+            var window = scope.ServiceProvider.GetRequiredService<HostWindow>();
             var app = scope.ServiceProvider.GetRequiredService<App>();
             app.Run(window);
         }
