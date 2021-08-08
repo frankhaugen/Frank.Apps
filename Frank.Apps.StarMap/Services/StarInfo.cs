@@ -1,5 +1,4 @@
-﻿using System;
-using System.Numerics;
+﻿using System.Numerics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -48,8 +47,11 @@ namespace Frank.Apps.StarMap.Services
 
             var position = GetLightyearPosition(Position);
 
-            ellipse.SetValue(Canvas.LeftProperty, Math.Abs(position.X).Multiply(10));
-            ellipse.SetValue(Canvas.TopProperty, Math.Abs(position.Y).Multiply(10));
+            Canvas.SetLeft(ellipse, position.X.Multiply(10));
+            Canvas.SetTop(ellipse, position.Y.Multiply(10));
+
+            //ellipse.SetValue(Canvas.LeftProperty, Math.Abs(position.X).Multiply(-10));
+            //ellipse.SetValue(Canvas.TopProperty, Math.Abs(position.Y).Multiply(-10));
             //ellipse.SetValue(Panel.ZIndexProperty, (double)(((Size.Height + Size.Width) / 2) * -1));
 
             return ellipse;
