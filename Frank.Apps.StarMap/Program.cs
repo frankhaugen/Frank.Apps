@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Frank.Apps.StarMap.Pages;
 using Frank.Apps.StarMap.Repositories;
 using Frank.Apps.StarMap.Views;
@@ -12,6 +13,8 @@ namespace Frank.Apps.StarMap
         [STAThread]
         public static void Main(string[] args)
         {
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+
             var host = Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {

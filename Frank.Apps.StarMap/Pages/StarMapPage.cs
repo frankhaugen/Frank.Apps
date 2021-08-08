@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
+using Frank.Apps.StarMap.Controls;
 using Frank.Apps.StarMap.Repositories;
 using Frank.Apps.StarMap.Services;
 using Microsoft.EntityFrameworkCore;
@@ -19,13 +20,16 @@ namespace Frank.Apps.StarMap.Pages
         public StarMapPage(DataContext dataContext)
         {
             Title = "Starmap";
-            _slider = Get2();
+            Background = new SolidColorBrush(Color.FromRgb(47, 21, 71));
+
+            //_slider = Get2();
             _canvas = Get();
 
             dataContext.Stars
                 .AsNoTracking()
                 .OrderBy(x => x.Dist)
-                .Take(50)
+                .Skip(1)
+                .Take(10)
                 .Select(x => new StarInfo(x))
                 .ToList()
                 .ForEach(x => _canvas.Children.Add(x.GetEllipse()))
@@ -34,20 +38,37 @@ namespace Frank.Apps.StarMap.Pages
             var grid = new Grid
             {
                 HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-                Width = 1024,
-                Height = 1024,
-                Background = new SolidColorBrush(Colors.MidnightBlue)
+                VerticalAlignment = VerticalAlignment.Center
             };
 
-            //_slider.MouseDoubleClick += new MouseButtonEventHandler(RestoreScalingFactor); //zoom func
+            //MouseWheel += Canvas_MouseWheel;
 
-            grid.Children.Add(_canvas);
-            grid.Children.Add(_slider);
+            //grid.Children.Add(_canvas);
+
+            //_canvas.SetBinding(DependencyProperty.Register(grid.Name, ), "Height");
+
             Content = grid;
         }
 
-        private Canvas Get()
+        private PanAndZoomCanvas Get()
+        {
+            PanAndZoomCanvas canvas = new()
+            {
+                Name = "gridPattern",
+                VerticalAlignment = VerticalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Background = new SolidColorBrush(Colors.MidnightBlue),
+                SnapsToDevicePixels = true,
+                //Height = 0,
+                //Width = 0,
+                RenderTransformOrigin = new Point(.5, .5),
+                LayoutTransform = new ScaleTransform(-1, 1, .5, -.5),
+            };
+
+            return canvas;
+        }
+
+        private Canvas Get3()
         {
             Canvas canvas = new()
             {
@@ -60,7 +81,6 @@ namespace Frank.Apps.StarMap.Pages
                 RenderTransformOrigin = new Point(.5, .5),
                 LayoutTransform = new ScaleTransform(-1, 1, .5, -.5),
             };
-
 
             return canvas;
         }
@@ -89,6 +109,31 @@ namespace Frank.Apps.StarMap.Pages
                 {
                     RestoreScalingFactor(_slider, args);
                 }
+            }
+        }
+
+        // Zoom
+        private double zoomMax = 25;
+        private double zoomMin = 0.25;
+        private double zoomSpeed = 0.001;
+        private double zoom = 1;
+
+        // Zoom on Mouse wheel
+        private void Canvas_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            zoom += zoomSpeed * e.Delta; // Ajust zooming speed (e.Delta = Mouse spin value )
+            if (zoom < zoomMin) { zoom = zoomMin; } // Limit Min Scale
+            if (zoom > zoomMax) { zoom = zoomMax; } // Limit Max Scale
+
+            Point mousePos = e.GetPosition(_canvas);
+
+            if (zoom > 1)
+            {
+                _canvas.RenderTransform = new ScaleTransform(zoom, zoom, mousePos.X, mousePos.Y); // transform Canvas size from mouse position
+            }
+            else
+            {
+                _canvas.RenderTransform = new ScaleTransform(zoom, zoom); // transform Canvas size
             }
         }
 
