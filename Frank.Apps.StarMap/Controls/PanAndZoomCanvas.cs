@@ -30,6 +30,8 @@ namespace Frank.Apps.StarMap.Controls
 
         public PanAndZoomCanvas()
         {
+            var lineEvery = 1;
+
             MouseDown += PanAndZoomCanvas_MouseDown;
             MouseUp += PanAndZoomCanvas_MouseUp;
             MouseMove += PanAndZoomCanvas_MouseMove;
