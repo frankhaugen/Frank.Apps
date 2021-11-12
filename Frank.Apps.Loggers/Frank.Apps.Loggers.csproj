@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk.Worker">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <UserSecretsId>dotnet-Frank.Apps.Loggers-148116AF-FBF7-4AE2-A958-BDAD3CB3BCA3</UserSecretsId>
     </PropertyGroup>

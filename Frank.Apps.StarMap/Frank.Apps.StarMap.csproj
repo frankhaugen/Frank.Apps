@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk.Worker">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
-        <TargetFramework>net5.0-windows</TargetFramework>
+        <TargetFramework>net6.0-windows</TargetFramework>
         <UseWpf>true</UseWpf>
         <UserSecretsId>dotnet-Frank.Apps.StarMap-8C76023A-07E8-4AE1-B571-CBE7CB212C70</UserSecretsId>
     </PropertyGroup>

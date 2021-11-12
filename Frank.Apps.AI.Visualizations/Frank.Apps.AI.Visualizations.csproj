@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
-        <TargetFramework>net5.0-windows</TargetFramework>
-        <LangVersion>9.0</LangVersion>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <LangVersion>10.0</LangVersion>
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
         <StartupObject>Frank.Apps.AI.Visualizations.Program</StartupObject>

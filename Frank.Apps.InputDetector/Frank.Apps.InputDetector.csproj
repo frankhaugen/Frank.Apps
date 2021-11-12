@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk.Worker">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
-        <TargetFramework>net5.0-windows</TargetFramework>
+        <TargetFramework>net6.0-windows</TargetFramework>
         <UseWpf>true</UseWpf>
         <UserSecretsId>dotnet-Frank.Apps.InputDetector-41DC77C1-FC00-494C-A946-318634F3FF21</UserSecretsId>
     </PropertyGroup>

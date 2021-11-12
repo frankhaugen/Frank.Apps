@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk.Worker">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
-        <TargetFramework>net5.0-windows</TargetFramework>
+        <TargetFramework>net6.0-windows</TargetFramework>
         <UseWpf>true</UseWpf>
         <UserSecretsId>dotnet-Frank.Apps.Sudoku-7F7245C5-D46E-4B32-87B1-460ABE376CB3</UserSecretsId>
     </PropertyGroup>

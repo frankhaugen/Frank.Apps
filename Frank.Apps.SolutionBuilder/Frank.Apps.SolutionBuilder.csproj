@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk.Worker">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>dotnet-Frank.Apps.SolutionBuilder-6E569A9F-B3AC-44BE-93A5-B2EB74E22E3E</UserSecretsId>
   </PropertyGroup>
 

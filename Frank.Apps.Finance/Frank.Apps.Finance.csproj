@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk.Worker">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>dotnet-Frank.Apps.Finance-1F7673B8-E5CD-4D2B-A715-2C2B7CA9A29B</UserSecretsId>
   </PropertyGroup>
 

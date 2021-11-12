@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk.Worker">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
-        <TargetFramework>net5.0-windows</TargetFramework>
+        <TargetFramework>net6.0-windows</TargetFramework>
         <UseWpf>true</UseWpf>
         <UserSecretsId>dotnet-Frank.Apps.SecurityCam-C3330A6B-B50F-48DE-896A-6477CCDAB060</UserSecretsId>
     </PropertyGroup>
