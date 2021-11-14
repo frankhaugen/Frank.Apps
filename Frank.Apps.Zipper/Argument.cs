@@ -1,10 +1,9 @@
-﻿namespace Frank.Apps.Zipper
+﻿namespace Frank.Apps.Zipper;
+
+public enum Argument
 {
-    public enum Argument
-    {
-        Filename,
-        Origin,
-        Destination,
-        Error
-    }
+    Filename,
+    Origin,
+    Destination,
+    Error
 }

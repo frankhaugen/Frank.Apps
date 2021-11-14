@@ -1,18 +1,17 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace Frank.Apps.InputDetector
+namespace Frank.Apps.InputDetector;
+
+public class MainWindow : Window
 {
-    public class MainWindow : Window
+    public MainWindow()
     {
-        public MainWindow()
-        {
-            var textbox = new TextBlock();
+        var textbox = new TextBlock();
 
-            //ButtonCodeExtensions.ToMouseButtonData()
+        //ButtonCodeExtensions.ToMouseButtonData()
 
 
-            Content = textbox;
-        }
+        Content = textbox;
     }
 }

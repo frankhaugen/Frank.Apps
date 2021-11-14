@@ -3,30 +3,29 @@ using System.Collections.Generic;
 using System.IO;
 using Microsoft.Build.Evaluation;
 
-namespace Frank.Apps.BuildTool.Cli
+namespace Frank.Apps.BuildTool.Cli;
+
+public class MsBuildTool
 {
-    public class MsBuildTool
+    public List<Project> GetProjects(DirectoryInfo directory)
     {
-        public List<Project> GetProjects(DirectoryInfo directory)
+        var files = directory.EnumerateFiles("*.csproj", SearchOption.AllDirectories);
+        var msBuildProjects = new List<Project>();
+
+        foreach (var fileInfo in files)
         {
-            var files = directory.EnumerateFiles("*.csproj", SearchOption.AllDirectories);
-            var msBuildProjects = new List<Project>();
-
-            foreach (var fileInfo in files)
+            try
             {
-                try
-                {
-                    Console.WriteLine(fileInfo.Name);
-                    var project = new Project(fileInfo.FullName);
-                    msBuildProjects.Add(project);
-                }
-                catch (Exception e)
-                {
-                    //Console.WriteLine(e);
-                }
+                Console.WriteLine(fileInfo.Name);
+                var project = new Project(fileInfo.FullName);
+                msBuildProjects.Add(project);
             }
-
-            return msBuildProjects;
+            catch (Exception e)
+            {
+                //Console.WriteLine(e);
+            }
         }
+
+        return msBuildProjects;
     }
 }

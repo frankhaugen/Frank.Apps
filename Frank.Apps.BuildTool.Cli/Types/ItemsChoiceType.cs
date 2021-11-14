@@ -1,241 +1,240 @@
-﻿namespace Frank.Apps.BuildTool.Cli.Types
+﻿namespace Frank.Apps.BuildTool.Cli.Types;
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+[System.SerializableAttribute()]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://schemas.microsoft.com/developer/msbuild/2003", IncludeInSchema = false)]
+public enum ItemsChoiceType
 {
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://schemas.microsoft.com/developer/msbuild/2003", IncludeInSchema = false)]
-    public enum ItemsChoiceType
-    {
+    AddModuleNamesToAssembly,
 
-        /// <remarks/>
-        AddModuleNamesToAssembly,
+    /// <remarks/>
+    AdditionalDependencies,
 
-        /// <remarks/>
-        AdditionalDependencies,
+    /// <remarks/>
+    AdditionalLibraryDirectories,
 
-        /// <remarks/>
-        AdditionalLibraryDirectories,
+    /// <remarks/>
+    AdditionalManifestDependencies,
 
-        /// <remarks/>
-        AdditionalManifestDependencies,
+    /// <remarks/>
+    AllowIsolation,
 
-        /// <remarks/>
-        AllowIsolation,
+    /// <remarks/>
+    AssemblyDebug,
 
-        /// <remarks/>
-        AssemblyDebug,
+    /// <remarks/>
+    AssemblyLinkResource,
 
-        /// <remarks/>
-        AssemblyLinkResource,
+    /// <remarks/>
+    BaseAddress,
 
-        /// <remarks/>
-        BaseAddress,
+    /// <remarks/>
+    CLRImageType,
 
-        /// <remarks/>
-        CLRImageType,
+    /// <remarks/>
+    CLRSupportLastError,
 
-        /// <remarks/>
-        CLRSupportLastError,
+    /// <remarks/>
+    CLRThreadAttribute,
 
-        /// <remarks/>
-        CLRThreadAttribute,
+    /// <remarks/>
+    CLRUnmanagedCodeCheck,
 
-        /// <remarks/>
-        CLRUnmanagedCodeCheck,
+    /// <remarks/>
+    CreateHotPatchableImage,
 
-        /// <remarks/>
-        CreateHotPatchableImage,
+    /// <remarks/>
+    DataExecutionPrevention,
 
-        /// <remarks/>
-        DataExecutionPrevention,
+    /// <remarks/>
+    DelayLoadDLLs,
 
-        /// <remarks/>
-        DelayLoadDLLs,
+    /// <remarks/>
+    DelaySign,
 
-        /// <remarks/>
-        DelaySign,
+    /// <remarks/>
+    Driver,
 
-        /// <remarks/>
-        Driver,
+    /// <remarks/>
+    EmbedManagedResourceFile,
 
-        /// <remarks/>
-        EmbedManagedResourceFile,
+    /// <remarks/>
+    EnableCOMDATFolding,
 
-        /// <remarks/>
-        EnableCOMDATFolding,
+    /// <remarks/>
+    EnableUAC,
 
-        /// <remarks/>
-        EnableUAC,
+    /// <remarks/>
+    EntryPointSymbol,
 
-        /// <remarks/>
-        EntryPointSymbol,
+    /// <remarks/>
+    FixedBaseAddress,
 
-        /// <remarks/>
-        FixedBaseAddress,
+    /// <remarks/>
+    ForceFileOutput,
 
-        /// <remarks/>
-        ForceFileOutput,
+    /// <remarks/>
+    ForceSymbolReferences,
 
-        /// <remarks/>
-        ForceSymbolReferences,
+    /// <remarks/>
+    FunctionOrder,
 
-        /// <remarks/>
-        FunctionOrder,
+    /// <remarks/>
+    GenerateDebugInformation,
 
-        /// <remarks/>
-        GenerateDebugInformation,
+    /// <remarks/>
+    GenerateMapFile,
 
-        /// <remarks/>
-        GenerateMapFile,
+    /// <remarks/>
+    HeapCommitSize,
 
-        /// <remarks/>
-        HeapCommitSize,
+    /// <remarks/>
+    HeapReserveSize,
 
-        /// <remarks/>
-        HeapReserveSize,
+    /// <remarks/>
+    IgnoreAllDefaultLibraries,
 
-        /// <remarks/>
-        IgnoreAllDefaultLibraries,
+    /// <remarks/>
+    IgnoreEmbeddedIDL,
 
-        /// <remarks/>
-        IgnoreEmbeddedIDL,
+    /// <remarks/>
+    IgnoreSpecificDefaultLibraries,
 
-        /// <remarks/>
-        IgnoreSpecificDefaultLibraries,
+    /// <remarks/>
+    IgnoreStandardIncludePath,
 
-        /// <remarks/>
-        IgnoreStandardIncludePath,
+    /// <remarks/>
+    ImageHasSafeExceptionHandlers,
 
-        /// <remarks/>
-        ImageHasSafeExceptionHandlers,
+    /// <remarks/>
+    ImportLibrary,
 
-        /// <remarks/>
-        ImportLibrary,
+    /// <remarks/>
+    KeyContainer,
 
-        /// <remarks/>
-        KeyContainer,
+    /// <remarks/>
+    KeyFile,
 
-        /// <remarks/>
-        KeyFile,
+    /// <remarks/>
+    LargeAddressAware,
 
-        /// <remarks/>
-        LargeAddressAware,
+    /// <remarks/>
+    LinkErrorReporting,
 
-        /// <remarks/>
-        LinkErrorReporting,
+    /// <remarks/>
+    LinkStatus,
 
-        /// <remarks/>
-        LinkStatus,
+    /// <remarks/>
+    LinkTimeCodeGeneration,
 
-        /// <remarks/>
-        LinkTimeCodeGeneration,
+    /// <remarks/>
+    MSDOSStubFileName,
 
-        /// <remarks/>
-        MSDOSStubFileName,
+    /// <remarks/>
+    MapExports,
 
-        /// <remarks/>
-        MapExports,
+    /// <remarks/>
+    MapFileName,
 
-        /// <remarks/>
-        MapFileName,
+    /// <remarks/>
+    MergeSections,
 
-        /// <remarks/>
-        MergeSections,
+    /// <remarks/>
+    MergedIDLBaseFileName,
 
-        /// <remarks/>
-        MergedIDLBaseFileName,
+    /// <remarks/>
+    MidlCommandFile,
 
-        /// <remarks/>
-        MidlCommandFile,
+    /// <remarks/>
+    MinimumRequiredVersion,
 
-        /// <remarks/>
-        MinimumRequiredVersion,
+    /// <remarks/>
+    ModuleDefinitionFile,
 
-        /// <remarks/>
-        ModuleDefinitionFile,
+    /// <remarks/>
+    OptimizeReferences,
 
-        /// <remarks/>
-        OptimizeReferences,
+    /// <remarks/>
+    OutputFile,
 
-        /// <remarks/>
-        OutputFile,
+    /// <remarks/>
+    PreventDllBinding,
 
-        /// <remarks/>
-        PreventDllBinding,
+    /// <remarks/>
+    Profile,
 
-        /// <remarks/>
-        Profile,
+    /// <remarks/>
+    ProfileGuidedDatabase,
 
-        /// <remarks/>
-        ProfileGuidedDatabase,
+    /// <remarks/>
+    ProgramDatabaseFile,
 
-        /// <remarks/>
-        ProgramDatabaseFile,
+    /// <remarks/>
+    RandomizedBaseAddress,
 
-        /// <remarks/>
-        RandomizedBaseAddress,
+    /// <remarks/>
+    RegisterOutput,
 
-        /// <remarks/>
-        RegisterOutput,
+    /// <remarks/>
+    SectionAlignment,
 
-        /// <remarks/>
-        SectionAlignment,
+    /// <remarks/>
+    ShowProgress,
 
-        /// <remarks/>
-        ShowProgress,
+    /// <remarks/>
+    SpecifySectionAttributes,
 
-        /// <remarks/>
-        SpecifySectionAttributes,
+    /// <remarks/>
+    StackCommitSize,
 
-        /// <remarks/>
-        StackCommitSize,
+    /// <remarks/>
+    StackReserveSize,
 
-        /// <remarks/>
-        StackReserveSize,
+    /// <remarks/>
+    StripPrivateSymbols,
 
-        /// <remarks/>
-        StripPrivateSymbols,
+    /// <remarks/>
+    SubSystem,
 
-        /// <remarks/>
-        SubSystem,
+    /// <remarks/>
+    SupportNobindOfDelayLoadedDLL,
 
-        /// <remarks/>
-        SupportNobindOfDelayLoadedDLL,
+    /// <remarks/>
+    SupportUnloadOfDelayLoadedDLL,
 
-        /// <remarks/>
-        SupportUnloadOfDelayLoadedDLL,
+    /// <remarks/>
+    SuppressStartupBanner,
 
-        /// <remarks/>
-        SuppressStartupBanner,
+    /// <remarks/>
+    SwapRunFromCD,
 
-        /// <remarks/>
-        SwapRunFromCD,
+    /// <remarks/>
+    SwapRunFromNET,
 
-        /// <remarks/>
-        SwapRunFromNET,
+    /// <remarks/>
+    TargetMachine,
 
-        /// <remarks/>
-        TargetMachine,
+    /// <remarks/>
+    TerminalServerAware,
 
-        /// <remarks/>
-        TerminalServerAware,
+    /// <remarks/>
+    TreatLinkerWarningAsErrors,
 
-        /// <remarks/>
-        TreatLinkerWarningAsErrors,
+    /// <remarks/>
+    TypeLibraryFile,
 
-        /// <remarks/>
-        TypeLibraryFile,
+    /// <remarks/>
+    TypeLibraryResourceID,
 
-        /// <remarks/>
-        TypeLibraryResourceID,
+    /// <remarks/>
+    UACExecutionLevel,
 
-        /// <remarks/>
-        UACExecutionLevel,
+    /// <remarks/>
+    UACUIAccess,
 
-        /// <remarks/>
-        UACUIAccess,
-
-        /// <remarks/>
-        Version,
-    }
+    /// <remarks/>
+    Version,
 }

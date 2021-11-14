@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+namespace Frank.Apps.Loggers;
+
 public class Worker : BackgroundService
 {
     private readonly ILogger<Worker> _logger;

@@ -1,11 +1,10 @@
-﻿namespace Frank.Apps.StarMap.Models
+﻿namespace Frank.Apps.StarMap.Models;
+
+public class StarModel : SphereGeometry3D
 {
-    public class StarModel : SphereGeometry3D
+    public StarModel()
     {
-        public StarModel()
-        {
-            Radius = 1;
-            Separators = 10;
-        }
+        Radius = 1;
+        Separators = 10;
     }
 }

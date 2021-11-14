@@ -1,8 +1,7 @@
 ﻿using System.Windows;
 
-namespace Frank.Apps.Sudoku
+namespace Frank.Apps.Sudoku;
+
+public class App : Application
 {
-    public class App : Application
-    {
-    }
 }

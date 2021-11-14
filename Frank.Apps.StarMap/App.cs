@@ -1,8 +1,7 @@
 ﻿using System.Windows;
 
-namespace Frank.Apps.StarMap
+namespace Frank.Apps.StarMap;
+
+public class App : Application
 {
-    public class App : Application
-    {
-    }
 }

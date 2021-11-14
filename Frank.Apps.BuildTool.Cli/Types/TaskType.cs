@@ -1,62 +1,61 @@
-﻿namespace Frank.Apps.BuildTool.Cli.Types
+﻿namespace Frank.Apps.BuildTool.Cli.Types;
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://schemas.microsoft.com/developer/msbuild/2003")]
+public partial class TaskType
 {
+
+    private TaskTypeOutput[] outputField;
+
+    private string conditionField;
+
+    private string continueOnErrorField;
+
+    private string architectureField;
+
+    private string runtimeField;
+
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://schemas.microsoft.com/developer/msbuild/2003")]
-    public partial class TaskType
+    [System.Xml.Serialization.XmlElementAttribute("Output")]
+    public TaskTypeOutput[] Output
     {
+        get { return this.outputField; }
+        set { this.outputField = value; }
+    }
 
-        private TaskTypeOutput[] outputField;
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string Condition
+    {
+        get { return this.conditionField; }
+        set { this.conditionField = value; }
+    }
 
-        private string conditionField;
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string ContinueOnError
+    {
+        get { return this.continueOnErrorField; }
+        set { this.continueOnErrorField = value; }
+    }
 
-        private string continueOnErrorField;
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string Architecture
+    {
+        get { return this.architectureField; }
+        set { this.architectureField = value; }
+    }
 
-        private string architectureField;
-
-        private string runtimeField;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Output")]
-        public TaskTypeOutput[] Output
-        {
-            get { return this.outputField; }
-            set { this.outputField = value; }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Condition
-        {
-            get { return this.conditionField; }
-            set { this.conditionField = value; }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string ContinueOnError
-        {
-            get { return this.continueOnErrorField; }
-            set { this.continueOnErrorField = value; }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Architecture
-        {
-            get { return this.architectureField; }
-            set { this.architectureField = value; }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Runtime
-        {
-            get { return this.runtimeField; }
-            set { this.runtimeField = value; }
-        }
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string Runtime
+    {
+        get { return this.runtimeField; }
+        set { this.runtimeField = value; }
     }
 }

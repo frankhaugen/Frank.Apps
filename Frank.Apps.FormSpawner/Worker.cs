@@ -4,28 +4,27 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Frank.Apps.FormSpawner
+namespace Frank.Apps.FormSpawner;
+
+public class Worker : BackgroundService
 {
-    public class Worker : BackgroundService
+    private readonly ILogger<Worker> _logger;
+    private readonly ISomething _something;
+
+    public Worker(ILogger<Worker> logger, ISomething something)
     {
-        private readonly ILogger<Worker> _logger;
-        private readonly ISomething _something;
+        _logger = logger;
+        _something = something;
+    }
 
-        public Worker(ILogger<Worker> logger, ISomething something)
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        while (!stoppingToken.IsCancellationRequested)
         {
-            _logger = logger;
-            _something = something;
-        }
+            _logger.LogInformation($"LOG => {DateTime.UtcNow}");
+            _something.Increment();
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-        {
-            while (!stoppingToken.IsCancellationRequested)
-            {
-                _logger.LogInformation($"LOG => {DateTime.UtcNow}");
-                _something.Increment();
-
-                await Task.Delay(1000, stoppingToken);
-            }
+            await Task.Delay(1000, stoppingToken);
         }
     }
 }

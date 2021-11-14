@@ -1,7 +1,6 @@
-namespace Frank.Apps.DependencyInjectionWpf
+namespace Frank.Apps.DependencyInjectionWpf;
+
+public interface ILayoutConstructorService
 {
-    public interface ILayoutConstructorService
-    {
-        MainLayout Layout { get; }
-    }
+    MainLayout Layout { get; }
 }

@@ -1,10 +1,8 @@
-﻿using Frank.Libraries.Logging.Shared;
-using Microsoft.Extensions.Logging;
+﻿using Frank.Apps.Loggers.LoggingProviders.Shared;
 
-namespace Frank.Libraries.Logging.Sql
+namespace Frank.Apps.Loggers.LoggingProviders.Sql;
+
+public class SqlLoggerConfiguration : LoggerConfigurationBase
 {
-    public class SqlLoggerConfiguration : LoggerConfigurationBase
-    {
-        public string ConnectionString { get; set; } = "Server=.\\SQLEXPRESS;Database=LoggingDatabase;Trusted_Connection=True;";
-    }
+    public string ConnectionString { get; set; } = "Server=.\\SQLEXPRESS;Database=LoggingDatabase;Trusted_Connection=True;";
 }

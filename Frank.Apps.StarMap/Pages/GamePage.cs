@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Numerics;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -9,7 +7,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using Frank.Apps.StarMap.Controls;
-using Frank.Libraries.Calculators.BeerCalculators;
+using Frank.Apps.StarMap.Services;
 using Frank.Libraries.Calculators.FluentCalculation;
 
 namespace Frank.Apps.StarMap.Pages;

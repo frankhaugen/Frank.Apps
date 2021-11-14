@@ -1,17 +1,16 @@
 ﻿using System.Windows;
 using Frank.Apps.VisualNovel.ViewModels;
 
-namespace Frank.Apps.VisualNovel.Views
+namespace Frank.Apps.VisualNovel.Views;
+
+/// <summary>
+/// Interaction logic for VisualNovelView.xaml
+/// </summary>
+public partial class VisualNovelView : Window
 {
-    /// <summary>
-    /// Interaction logic for VisualNovelView.xaml
-    /// </summary>
-    public partial class VisualNovelView : Window
+    public VisualNovelView(VisualNovelViewModel viewModel)
     {
-        public VisualNovelView(VisualNovelViewModel viewModel)
-        {
-            DataContext = viewModel;
-            InitializeComponent();
-        }
+        DataContext = viewModel;
+        InitializeComponent();
     }
 }

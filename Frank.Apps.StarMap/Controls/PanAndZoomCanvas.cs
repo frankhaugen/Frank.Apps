@@ -5,214 +5,210 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace Frank.Apps.StarMap.Controls
+namespace Frank.Apps.StarMap.Controls;
+
+/// <summary>
+/// Interaktionslogik für PanAndZoomCanvas.xaml
+/// https://stackoverflow.com/questions/35165349/how-to-drag-rendertransform-with-mouse-in-wpf
+/// </summary>
+public partial class PanAndZoomCanvas : Canvas
 {
-    /// <summary>
-    /// Interaktionslogik für PanAndZoomCanvas.xaml
-    /// https://stackoverflow.com/questions/35165349/how-to-drag-rendertransform-with-mouse-in-wpf
-    /// </summary>
-    public partial class PanAndZoomCanvas : Canvas
+    private readonly MatrixTransform _transform = new MatrixTransform();
+    private Point _initialMousePosition;
+
+    private bool _dragging;
+    private UIElement _selectedElement;
+    private Vector _draggingDelta;
+
+    private Color _lineColor = Color.FromArgb(0xFF, 0x66, 0x66, 0x66);
+    private Color _backgroundColor = Color.FromArgb(0xFF, 0x33, 0x33, 0x33);
+    private List<Line> _gridLines = new List<Line>();
+
+
+    public PanAndZoomCanvas()
     {
-        #region Variables
-        private readonly MatrixTransform _transform = new MatrixTransform();
-        private Point _initialMousePosition;
+        var lineEvery = 1;
 
-        private bool _dragging;
-        private UIElement _selectedElement;
-        private Vector _draggingDelta;
+        MouseDown += PanAndZoomCanvas_MouseDown;
+        MouseUp += PanAndZoomCanvas_MouseUp;
+        MouseMove += PanAndZoomCanvas_MouseMove;
+        MouseWheel += PanAndZoomCanvas_MouseWheel;
+        SnapsToDevicePixels = true;
+        BackgroundColor = _backgroundColor;
 
-        private Color _lineColor = Color.FromArgb(0xFF, 0x66, 0x66, 0x66);
-        private Color _backgroundColor = Color.FromArgb(0xFF, 0x33, 0x33, 0x33);
-        private List<Line> _gridLines = new List<Line>();
-
-
-        #endregion
-
-        public PanAndZoomCanvas()
-        {
-            var lineEvery = 1;
-
-            MouseDown += PanAndZoomCanvas_MouseDown;
-            MouseUp += PanAndZoomCanvas_MouseUp;
-            MouseMove += PanAndZoomCanvas_MouseMove;
-            MouseWheel += PanAndZoomCanvas_MouseWheel;
-            SnapsToDevicePixels = true;
-            BackgroundColor = _backgroundColor;
-
-            // draw lines
+        // draw lines
             
-        }
+    }
 
-        private void DrawLines()
+    private void DrawLines()
+    {
+        for (int x = -4000; x <= 4000; x += 100)
         {
-            for (int x = -4000; x <= 4000; x += 100)
+            Line verticalLine = new Line
             {
-                Line verticalLine = new Line
-                {
-                    Stroke = new SolidColorBrush(_lineColor),
-                    X1 = x,
-                    Y1 = -4000,
-                    X2 = x,
-                    Y2 = 4000
-                };
+                Stroke = new SolidColorBrush(_lineColor),
+                X1 = x,
+                Y1 = -4000,
+                X2 = x,
+                Y2 = 4000
+            };
 
-                if (x % 1000 == 0)
-                {
-                    verticalLine.StrokeThickness = 3;
-                }
-                else
-                {
-                    verticalLine.StrokeThickness = 1;
-                }
-
-                Children.Add(verticalLine);
-                _gridLines.Add(verticalLine);
+            if (x % 1000 == 0)
+            {
+                verticalLine.StrokeThickness = 3;
+            }
+            else
+            {
+                verticalLine.StrokeThickness = 1;
             }
 
-            for (int y = -4000; y <= 4000; y += 100)
-            {
-                Line horizontalLine = new Line
-                {
-                    Stroke = new SolidColorBrush(_lineColor),
-                    X1 = -4000,
-                    Y1 = y,
-                    X2 = 4000,
-                    Y2 = y
-                };
-
-                if (y % 1000 == 0)
-                {
-                    horizontalLine.StrokeThickness = 3;
-                }
-                else
-                {
-                    horizontalLine.StrokeThickness = 1;
-                }
-
-                Children.Add(horizontalLine);
-                _gridLines.Add(horizontalLine);
-            }
+            Children.Add(verticalLine);
+            _gridLines.Add(verticalLine);
         }
 
-        public float Zoomfactor { get; set; } = 1.1f;
-
-        public Color LineColor
+        for (int y = -4000; y <= 4000; y += 100)
         {
-            get { return _lineColor; }
-
-            set
+            Line horizontalLine = new Line
             {
-                _lineColor = value;
+                Stroke = new SolidColorBrush(_lineColor),
+                X1 = -4000,
+                Y1 = y,
+                X2 = 4000,
+                Y2 = y
+            };
 
-                foreach (Line line in _gridLines)
-                {
-                    line.Stroke = new SolidColorBrush(_lineColor);
-                }
-            }
-        }
-
-        public Color BackgroundColor
-        {
-            get { return _backgroundColor; }
-
-            set
+            if (y % 1000 == 0)
             {
-                _backgroundColor = value;
-                Background = new SolidColorBrush(_backgroundColor);
+                horizontalLine.StrokeThickness = 3;
             }
-        }
+            else
+            {
+                horizontalLine.StrokeThickness = 1;
+            }
 
-        public void SetGridVisibility(Visibility value)
+            Children.Add(horizontalLine);
+            _gridLines.Add(horizontalLine);
+        }
+    }
+
+    public float Zoomfactor { get; set; } = 1.1f;
+
+    public Color LineColor
+    {
+        get { return _lineColor; }
+
+        set
         {
+            _lineColor = value;
+
             foreach (Line line in _gridLines)
             {
-                line.Visibility = value;
+                line.Stroke = new SolidColorBrush(_lineColor);
             }
         }
+    }
 
-        private void PanAndZoomCanvas_MouseDown(object sender, MouseButtonEventArgs e)
+    public Color BackgroundColor
+    {
+        get { return _backgroundColor; }
+
+        set
         {
-            if (e.ChangedButton == MouseButton.Right)
-            {
-                _initialMousePosition = _transform.Inverse.Transform(e.GetPosition(this));
-            }
+            _backgroundColor = value;
+            Background = new SolidColorBrush(_backgroundColor);
+        }
+    }
 
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                if (this.Children.Contains((UIElement)e.Source))
-                {
-                    _selectedElement = (UIElement)e.Source;
-                    Point mousePosition = Mouse.GetPosition(this);
-                    double x = Canvas.GetLeft(_selectedElement);
-                    double y = Canvas.GetTop(_selectedElement);
-                    Point elementPosition = new Point(x, y);
-                    _draggingDelta = elementPosition - mousePosition;
-                }
-                _dragging = true;
-            }
+    public void SetGridVisibility(Visibility value)
+    {
+        foreach (Line line in _gridLines)
+        {
+            line.Visibility = value;
+        }
+    }
+
+    private void PanAndZoomCanvas_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+        if (e.ChangedButton == MouseButton.Right)
+        {
+            _initialMousePosition = _transform.Inverse.Transform(e.GetPosition(this));
         }
 
-        private void PanAndZoomCanvas_MouseUp(object sender, MouseButtonEventArgs e)
+        if (e.ChangedButton == MouseButton.Left)
         {
-            _dragging = false;
-            _selectedElement = null;
+            if (this.Children.Contains((UIElement)e.Source))
+            {
+                _selectedElement = (UIElement)e.Source;
+                Point mousePosition = Mouse.GetPosition(this);
+                double x = Canvas.GetLeft(_selectedElement);
+                double y = Canvas.GetTop(_selectedElement);
+                Point elementPosition = new Point(x, y);
+                _draggingDelta = elementPosition - mousePosition;
+            }
+            _dragging = true;
         }
+    }
 
-        private void PanAndZoomCanvas_MouseMove(object sender, MouseEventArgs e)
+    private void PanAndZoomCanvas_MouseUp(object sender, MouseButtonEventArgs e)
+    {
+        _dragging = false;
+        _selectedElement = null;
+    }
+
+    private void PanAndZoomCanvas_MouseMove(object sender, MouseEventArgs e)
+    {
+        if (e.RightButton == MouseButtonState.Pressed)
         {
-            if (e.RightButton == MouseButtonState.Pressed)
-            {
-                Point mousePosition = _transform.Inverse.Transform(e.GetPosition(this));
-                Vector delta = Point.Subtract(mousePosition, _initialMousePosition);
-                var translate = new TranslateTransform(delta.X, delta.Y);
-                _transform.Matrix = translate.Value * _transform.Matrix;
-
-                foreach (UIElement child in this.Children)
-                {
-                    child.RenderTransform = _transform;
-                }
-            }
-
-            if (_dragging && e.LeftButton == MouseButtonState.Pressed)
-            {
-                double x = Mouse.GetPosition(this).X;
-                double y = Mouse.GetPosition(this).Y;
-
-                if (_selectedElement != null)
-                {
-                    Canvas.SetLeft(_selectedElement, x + _draggingDelta.X);
-                    Canvas.SetTop(_selectedElement, y + _draggingDelta.Y);
-                }
-            }
-        }
-
-        private void PanAndZoomCanvas_MouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            float scaleFactor = Zoomfactor;
-            if (e.Delta < 0)
-            {
-                scaleFactor = 1f / scaleFactor;
-            }
-
-            Point mousePostion = e.GetPosition(this);
-
-            Matrix scaleMatrix = _transform.Matrix;
-            scaleMatrix.ScaleAt(scaleFactor, scaleFactor, mousePostion.X, mousePostion.Y);
-            _transform.Matrix = scaleMatrix;
+            Point mousePosition = _transform.Inverse.Transform(e.GetPosition(this));
+            Vector delta = Point.Subtract(mousePosition, _initialMousePosition);
+            var translate = new TranslateTransform(delta.X, delta.Y);
+            _transform.Matrix = translate.Value * _transform.Matrix;
 
             foreach (UIElement child in this.Children)
             {
-                double x = Canvas.GetLeft(child);
-                double y = Canvas.GetTop(child);
-
-                double sx = x * scaleFactor;
-                double sy = y * scaleFactor;
-
-                Canvas.SetLeft(child, sx);
-                Canvas.SetTop(child, sy);
-
                 child.RenderTransform = _transform;
             }
+        }
+
+        if (_dragging && e.LeftButton == MouseButtonState.Pressed)
+        {
+            double x = Mouse.GetPosition(this).X;
+            double y = Mouse.GetPosition(this).Y;
+
+            if (_selectedElement != null)
+            {
+                Canvas.SetLeft(_selectedElement, x + _draggingDelta.X);
+                Canvas.SetTop(_selectedElement, y + _draggingDelta.Y);
+            }
+        }
+    }
+
+    private void PanAndZoomCanvas_MouseWheel(object sender, MouseWheelEventArgs e)
+    {
+        float scaleFactor = Zoomfactor;
+        if (e.Delta < 0)
+        {
+            scaleFactor = 1f / scaleFactor;
+        }
+
+        Point mousePostion = e.GetPosition(this);
+
+        Matrix scaleMatrix = _transform.Matrix;
+        scaleMatrix.ScaleAt(scaleFactor, scaleFactor, mousePostion.X, mousePostion.Y);
+        _transform.Matrix = scaleMatrix;
+
+        foreach (UIElement child in this.Children)
+        {
+            double x = Canvas.GetLeft(child);
+            double y = Canvas.GetTop(child);
+
+            double sx = x * scaleFactor;
+            double sy = y * scaleFactor;
+
+            Canvas.SetLeft(child, sx);
+            Canvas.SetTop(child, sy);
+
+            child.RenderTransform = _transform;
         }
     }
 }

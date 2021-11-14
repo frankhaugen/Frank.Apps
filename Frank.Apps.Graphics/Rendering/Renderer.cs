@@ -1,7 +1,6 @@
-﻿namespace Frank.Apps.Graphics.Rendering
-{
-    public class Renderer
-    {
+﻿namespace Frank.Apps.Graphics.Rendering;
 
-    }
+public class Renderer
+{
+
 }

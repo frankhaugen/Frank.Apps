@@ -4,28 +4,27 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Frank.Apps.DependencyInjectionWpf
+namespace Frank.Apps.DependencyInjectionWpf;
+
+public class Worker : BackgroundService
 {
-    public class Worker : BackgroundService
+    private readonly ILogger<Worker> _logger;
+
+    public Worker(ILogger<Worker> logger)
     {
-        private readonly ILogger<Worker> _logger;
+        _logger = logger;
+    }
 
-        public Worker(ILogger<Worker> logger)
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        var i = 0;
+
+        while (!stoppingToken.IsCancellationRequested)
         {
-            _logger = logger;
-        }
+            i++;
+            _logger.LogInformation(i.ToString());
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-        {
-            var i = 0;
-
-            while (!stoppingToken.IsCancellationRequested)
-            {
-                i++;
-                _logger.LogInformation(i.ToString());
-
-                await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken);
-            }
+            await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken);
         }
     }
 }

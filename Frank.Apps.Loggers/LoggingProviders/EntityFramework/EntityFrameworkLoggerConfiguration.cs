@@ -1,9 +1,8 @@
-using Frank.Libraries.Logging.Shared;
+using Frank.Apps.Loggers.LoggingProviders.Shared;
 
-namespace Frank.Libraries.Logging.EntityFramework
+namespace Frank.Apps.Loggers.LoggingProviders.EntityFramework;
+
+public class EntityFrameworkLoggerConfiguration : LoggerConfigurationBase
 {
-    public class EntityFrameworkLoggerConfiguration : LoggerConfigurationBase
-    {
 
-    }
 }

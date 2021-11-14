@@ -5,22 +5,21 @@ using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Frank.Apps.FormSpawner
+namespace Frank.Apps.FormSpawner;
+
+public class WindowHost : BackgroundService
 {
-    public class WindowHost : BackgroundService
+    private readonly IServiceProvider _serviceProvider;
+
+    public WindowHost(IServiceProvider serviceProvider)
     {
-        private readonly IServiceProvider _serviceProvider;
+        _serviceProvider = serviceProvider;
+    }
 
-        public WindowHost(IServiceProvider serviceProvider)
-        {
-            _serviceProvider = serviceProvider;
-        }
-
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-        {
-            using var scope = _serviceProvider.CreateScope();
-            var window = scope.ServiceProvider.GetRequiredService<SpawnedWindow>();
-            Application.Run(window);
-        }
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        using var scope = _serviceProvider.CreateScope();
+        var window = scope.ServiceProvider.GetRequiredService<SpawnedWindow>();
+        Application.Run(window);
     }
 }

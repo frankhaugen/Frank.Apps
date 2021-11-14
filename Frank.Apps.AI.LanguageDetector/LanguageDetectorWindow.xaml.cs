@@ -3,39 +3,38 @@ using System.Windows;
 using System.Windows.Controls;
 using Frank.Libraries.AI.LanguageDetection;
 
-namespace Frank.Apps.AI.LanguageDetector
+namespace Frank.Apps.AI.LanguageDetector;
+
+public partial class LanguageDetectorWindow : Window
 {
-    public partial class LanguageDetectorWindow : Window
+    private readonly LanguageDetectionService _languageDetector;
+
+    public LanguageDetectorWindow()
     {
-        private readonly LanguageDetectionService _languageDetector;
+        _languageDetector = new LanguageDetectionService(new LanguageDetectionOptions());
+        InitializeComponent();
+    }
 
-        public LanguageDetectorWindow()
+    private void InputTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(InputTextBox.Text))
         {
-            _languageDetector = new LanguageDetectionService(new LanguageDetectionOptions());
-            InitializeComponent();
+            LanguageLabel.Content = "?";
+            ProbabilityLabel.Content = "NaN";
         }
-
-        private void InputTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        else
         {
-            if (string.IsNullOrWhiteSpace(InputTextBox.Text))
+            var languages = _languageDetector.DetectAll(InputTextBox.Text);
+            var language = languages.OrderByDescending(x => x.Probability).FirstOrDefault();
+            if (language != null && language.Probability > 0.5)
             {
-                LanguageLabel.Content = "?";
-                ProbabilityLabel.Content = "NaN";
+                LanguageLabel.Content = language.Name;
+                ProbabilityLabel.Content = language.Probability;
             }
             else
             {
-                var languages = _languageDetector.DetectAll(InputTextBox.Text);
-                var language = languages.OrderByDescending(x => x.Probability).FirstOrDefault();
-                if (language != null && language.Probability > 0.5)
-                {
-                    LanguageLabel.Content = language.Name;
-                    ProbabilityLabel.Content = language.Probability;
-                }
-                else
-                {
-                    LanguageLabel.Content = "?";
-                    ProbabilityLabel.Content = "NaN";
-                }
+                LanguageLabel.Content = "?";
+                ProbabilityLabel.Content = "NaN";
             }
         }
     }

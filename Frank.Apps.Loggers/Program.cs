@@ -1,6 +1,6 @@
 using Frank.Apps.Loggers;
-using Frank.Libraries.Logging.EntityFramework;
-using Frank.Libraries.Logging.Extensions;
+using Frank.Apps.Loggers.LoggingProviders.EntityFramework;
+using Frank.Apps.Loggers.LoggingProviders.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

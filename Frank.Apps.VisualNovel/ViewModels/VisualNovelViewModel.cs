@@ -1,6 +1,5 @@
-﻿namespace Frank.Apps.VisualNovel.ViewModels
+﻿namespace Frank.Apps.VisualNovel.ViewModels;
+
+public class VisualNovelViewModel
 {
-    public class VisualNovelViewModel
-    {
-    }
 }

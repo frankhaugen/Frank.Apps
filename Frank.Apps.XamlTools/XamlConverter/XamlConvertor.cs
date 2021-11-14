@@ -7,66 +7,65 @@ using System.Xml.Linq;
 using Frank.Apps.XamlTools.XamlConverter.Parsers;
 using Microsoft.CSharp;
 
-namespace Frank.Apps.XamlTools.XamlConverter
+namespace Frank.Apps.XamlTools.XamlConverter;
+
+public class XamlConvertor
 {
-    public class XamlConvertor
+    internal class State
     {
-        internal class State
+        private readonly Dictionary<string, int> m_variables = new Dictionary<string, int>();
+
+        public CodeMemberMethod Method { get; set; }
+
+        public State()
         {
-            private readonly Dictionary<string, int> m_variables = new Dictionary<string, int>();
-
-            public CodeMemberMethod Method { get; set; }
-
-            public State()
-            {
-                Method = new CodeMemberMethod { Name = "Get" };
-            }
-
-            public void AddStatement(CodeStatement statement)
-            {
-                Method.Statements.Add(statement);
-            }
-
-            public void SetReturnType(Type returnType)
-            {
-                Method.ReturnType = new CodeTypeReference(returnType.Name);
-            }
-
-            public string GetVariableName(string originalName)
-            {
-                originalName = originalName.Substring(0, 1).ToLower() + originalName.Substring(1);
-                if (m_variables.ContainsKey(originalName))
-                {
-                    var number = ++m_variables[originalName];
-                    return originalName + number;
-                }
-                else
-                {
-                    m_variables.Add(originalName, 1);
-                    return originalName;
-                }
-            }
+            Method = new CodeMemberMethod { Name = "Get" };
         }
 
-
-        public string ConvertToString(string xamlCode)
+        public void AddStatement(CodeStatement statement)
         {
-            var dom = ConvertToDom(xamlCode);
-            var compiler = new CSharpCodeProvider();
-            var stringWriter = new StringWriter();
-            compiler.GenerateCodeFromMember(dom, stringWriter, new CodeGeneratorOptions{BracingStyle = "C"});
-            return stringWriter.ToString();
+            Method.Statements.Add(statement);
         }
 
-        public CodeMemberMethod ConvertToDom(string xamlCode)
+        public void SetReturnType(Type returnType)
         {
-            var state = new State();
-
-            XElement root = XElement.Parse(xamlCode);
-
-            new RootObjectParser(state).Parse(root);
-
-            return state.Method;
+            Method.ReturnType = new CodeTypeReference(returnType.Name);
         }
+
+        public string GetVariableName(string originalName)
+        {
+            originalName = originalName.Substring(0, 1).ToLower() + originalName.Substring(1);
+            if (m_variables.ContainsKey(originalName))
+            {
+                var number = ++m_variables[originalName];
+                return originalName + number;
+            }
+            else
+            {
+                m_variables.Add(originalName, 1);
+                return originalName;
+            }
+        }
+    }
+
+
+    public string ConvertToString(string xamlCode)
+    {
+        var dom = ConvertToDom(xamlCode);
+        var compiler = new CSharpCodeProvider();
+        var stringWriter = new StringWriter();
+        compiler.GenerateCodeFromMember(dom, stringWriter, new CodeGeneratorOptions{BracingStyle = "C"});
+        return stringWriter.ToString();
+    }
+
+    public CodeMemberMethod ConvertToDom(string xamlCode)
+    {
+        var state = new State();
+
+        XElement root = XElement.Parse(xamlCode);
+
+        new RootObjectParser(state).Parse(root);
+
+        return state.Method;
     }
 }

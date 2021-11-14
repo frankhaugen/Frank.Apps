@@ -1,34 +1,32 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Input;
 
-namespace Frank.Apps.RuntimeExecution
+namespace Frank.Apps.RuntimeExecution;
+
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    private readonly CodeExecuter _codeExecuter;
+
+    public MainWindow()
     {
-        private readonly CodeExecuter _codeExecuter;
+        InitializeComponent();
+        _codeExecuter = new CodeExecuter();
+    }
 
-        public MainWindow()
+    private async void Button_Click(object sender, RoutedEventArgs e)
+    {
+        var code = Editor.Text;
+        try
         {
-            InitializeComponent();
-            _codeExecuter = new CodeExecuter();
+            var result = await _codeExecuter.RoslynScriptingAsync(code);
+            MessageBox.Show(result);
         }
-
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        catch (Exception exception)
         {
-            var code = Editor.Text;
-            try
-            {
-                var result = await _codeExecuter.RoslynScriptingAsync(code);
-                MessageBox.Show(result);
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message, exception.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
-            }
+            MessageBox.Show(exception.Message, exception.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
         }
     }
 }

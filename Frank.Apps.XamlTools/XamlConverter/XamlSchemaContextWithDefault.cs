@@ -3,32 +3,31 @@ using System.Linq;
 using System.Reflection;
 using System.Xaml;
 
-namespace Frank.Apps.XamlTools.XamlConverter
+namespace Frank.Apps.XamlTools.XamlConverter;
+
+class XamlSchemaContextWithDefault : XamlSchemaContext
 {
-    class XamlSchemaContextWithDefault : XamlSchemaContext
+    private readonly Assembly m_defaultAssembly;
+
+    public XamlSchemaContextWithDefault() : this(Assembly.GetEntryAssembly())
+    {}
+
+    public XamlSchemaContextWithDefault(Assembly defaultAssembly)
+        : base(GetReferenceAssemblies())
     {
-        private readonly Assembly m_defaultAssembly;
+        m_defaultAssembly = defaultAssembly;
+    }
 
-        public XamlSchemaContextWithDefault() : this(Assembly.GetEntryAssembly())
-        {}
+    static IEnumerable<Assembly> GetReferenceAssemblies()
+    {
+        return new[] { "WindowsBase", "PresentationCore", "PresentationFramework" }.Select(an => Assembly.LoadWithPartialName(an));
+    }
 
-        public XamlSchemaContextWithDefault(Assembly defaultAssembly)
-            : base(GetReferenceAssemblies())
-        {
-            m_defaultAssembly = defaultAssembly;
-        }
+    protected override Assembly OnAssemblyResolve(string assemblyName)
+    {
+        if (string.IsNullOrEmpty(assemblyName))
+            return m_defaultAssembly;
 
-        static IEnumerable<Assembly> GetReferenceAssemblies()
-        {
-            return new[] { "WindowsBase", "PresentationCore", "PresentationFramework" }.Select(an => Assembly.LoadWithPartialName(an));
-        }
-
-        protected override Assembly OnAssemblyResolve(string assemblyName)
-        {
-            if (string.IsNullOrEmpty(assemblyName))
-                return m_defaultAssembly;
-
-            return base.OnAssemblyResolve(assemblyName);
-        }
+        return base.OnAssemblyResolve(assemblyName);
     }
 }

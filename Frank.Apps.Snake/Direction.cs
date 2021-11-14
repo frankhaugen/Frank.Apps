@@ -1,10 +1,9 @@
-﻿namespace Frank.Apps.Snake
+﻿namespace Frank.Apps.Snake;
+
+public enum Direction
 {
-    public enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
+    Up,
+    Down,
+    Left,
+    Right
 }

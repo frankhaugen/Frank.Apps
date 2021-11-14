@@ -2,32 +2,31 @@
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 
-namespace Frank.Apps.StarMap.Models
+namespace Frank.Apps.StarMap.Models;
+
+public class DiscGeometry3D : RoundMesh3D
 {
-    public class DiscGeometry3D : RoundMesh3D
+    protected override void CalculateGeometry()
     {
-        protected override void CalculateGeometry()
+        int numberOfSeparators = 4 * n + 4;
+
+        points = new Point3DCollection(numberOfSeparators + 1);
+        triangleIndices = new Int32Collection((numberOfSeparators + 1) * 3);
+
+        points.Add(new Point3D(0, 0, 0));
+        for (int divider = 0; divider < numberOfSeparators; divider++)
         {
-            int numberOfSeparators = 4 * n + 4;
+            double alpha = Math.PI / 2 / (n + 1) * divider;
+            points.Add(new Point3D(r * Math.Cos(alpha),
+                0, -1 * r * Math.Sin(alpha)));
 
-            points = new Point3DCollection(numberOfSeparators + 1);
-            triangleIndices = new Int32Collection((numberOfSeparators + 1) * 3);
-
-            points.Add(new Point3D(0, 0, 0));
-            for (int divider = 0; divider < numberOfSeparators; divider++)
-            {
-                double alpha = Math.PI / 2 / (n + 1) * divider;
-                points.Add(new Point3D(r * Math.Cos(alpha),
-                    0, -1 * r * Math.Sin(alpha)));
-
-                triangleIndices.Add(0);
-                triangleIndices.Add(divider + 1);
-                triangleIndices.Add((divider ==
-                                     (numberOfSeparators - 1)) ? 1 : (divider + 2));
-            }
+            triangleIndices.Add(0);
+            triangleIndices.Add(divider + 1);
+            triangleIndices.Add((divider ==
+                                 (numberOfSeparators - 1)) ? 1 : (divider + 2));
         }
-
-        public DiscGeometry3D()
-        { }
     }
+
+    public DiscGeometry3D()
+    { }
 }

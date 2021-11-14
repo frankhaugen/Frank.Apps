@@ -1,8 +1,7 @@
 ﻿using System.Windows;
 
-namespace Frank.Apps.InputDetector
+namespace Frank.Apps.InputDetector;
+
+public class App : Application
 {
-    public class App : Application
-    {
-    }
 }

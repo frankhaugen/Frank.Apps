@@ -6,27 +6,26 @@ using Frank.Libraries.AzureStorage;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Frank.Apps.AzureStorage
+namespace Frank.Apps.AzureStorage;
+
+public class Worker : BackgroundService
 {
-    public class Worker : BackgroundService
+    private readonly ILogger<Worker> _logger;
+    private readonly BlobService _blobService;
+
+    public Worker(ILogger<Worker> logger, BlobService blobService)
     {
-        private readonly ILogger<Worker> _logger;
-        private readonly BlobService _blobService;
+        _logger = logger;
+        _blobService = blobService;
+    }
 
-        public Worker(ILogger<Worker> logger, BlobService blobService)
-        {
-            _logger = logger;
-            _blobService = blobService;
-        }
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-        {
-            _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+        var file = new FileInfo("MicrosoftLogo.jpg");
+        var success = await _blobService.DeleteAsync(file.Name);
 
-            var file = new FileInfo("MicrosoftLogo.jpg");
-            var success = await _blobService.DeleteAsync(file.Name);
-
-            _logger.LogInformation($"Success: {success}");
-        }
+        _logger.LogInformation($"Success: {success}");
     }
 }

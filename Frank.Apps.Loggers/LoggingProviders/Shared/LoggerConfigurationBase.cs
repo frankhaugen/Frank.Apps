@@ -1,9 +1,8 @@
 using Microsoft.Extensions.Logging;
 
-namespace Frank.Libraries.Logging.Shared
+namespace Frank.Apps.Loggers.LoggingProviders.Shared;
+
+public abstract class LoggerConfigurationBase
 {
-    public abstract class LoggerConfigurationBase
-    {
-        public LogLevel LogLevel { get; set; } = LogLevel.Information;
-    }
+    public LogLevel LogLevel { get; set; } = LogLevel.Information;
 }

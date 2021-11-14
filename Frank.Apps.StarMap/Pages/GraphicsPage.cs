@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Windows.Controls;
+using Frank.Apps.StarMap.Services;
 using SciChart.Core.Extensions;
 using ScottPlot;
 using ScottPlot.Plottable;

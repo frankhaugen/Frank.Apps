@@ -3,49 +3,48 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 
 #pragma warning disable CA2100 // Review SQL queries for security vulnerabilities
-namespace Frank.Libraries.Logging.Sql
+namespace Frank.Apps.Loggers.LoggingProviders.Sql;
+
+public class SqlLogger : ILogger
 {
-    public class SqlLogger : ILogger
+    private readonly string _name;
+    private readonly SqlLoggerConfiguration _configuration;
+
+    public SqlLogger(string name, SqlLoggerConfiguration configuration)
     {
-        private readonly string _name;
-        private readonly SqlLoggerConfiguration _configuration;
+        _name = name;
+        _configuration = configuration;
+    }
 
-        public SqlLogger(string name, SqlLoggerConfiguration configuration)
+    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+    {
+        if (!IsEnabled(logLevel))
         {
-            _name = name;
-            _configuration = configuration;
+            return;
         }
 
-        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+        var query = SqlQueryConstructor.ConstructQuery(logLevel, eventId, state, exception, formatter, _name);
+
+        try
         {
-            if (!IsEnabled(logLevel))
-            {
-                return;
-            }
-
-            var query = SqlQueryConstructor.ConstructQuery(logLevel, eventId, state, exception, formatter, _name);
-
-            try
-            {
-                using var connection = new SqlConnection(_configuration.ConnectionString);
-                using var sqlCommand = new SqlCommand(query, connection);
-                connection.Open();
-                sqlCommand.ExecuteNonQuery();
-            }
-            catch
-            {
-                // Loggers don't throw
-            }
+            using var connection = new SqlConnection(_configuration.ConnectionString);
+            using var sqlCommand = new SqlCommand(query, connection);
+            connection.Open();
+            sqlCommand.ExecuteNonQuery();
         }
-
-        public bool IsEnabled(LogLevel logLevel)
+        catch
         {
-            return logLevel >= _configuration.LogLevel;
+            // Loggers don't throw
         }
+    }
 
-        public IDisposable BeginScope<TState>(TState state)
-        {
-            return null!;
-        }
+    public bool IsEnabled(LogLevel logLevel)
+    {
+        return logLevel >= _configuration.LogLevel;
+    }
+
+    public IDisposable BeginScope<TState>(TState state)
+    {
+        return null!;
     }
 }

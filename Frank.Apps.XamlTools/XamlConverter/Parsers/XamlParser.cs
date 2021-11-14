@@ -1,32 +1,31 @@
 using System.Xml.Linq;
 
-namespace Frank.Apps.XamlTools.XamlConverter.Parsers
+namespace Frank.Apps.XamlTools.XamlConverter.Parsers;
+
+abstract class XamlParser : ParserBase
 {
-    abstract class XamlParser : ParserBase
+    protected XamlParser(XamlConvertor.State state)
+        : base(state)
+    {}
+
+    public void Parse(XElement element)
     {
-        protected XamlParser(XamlConvertor.State state)
-            : base(state)
-        {}
+        ParseName(element.Name);
 
-        public void Parse(XElement element)
-        {
-            ParseName(element.Name);
+        foreach (var attribute in element.Attributes())
+            ParseAttribute(attribute);
 
-            foreach (var attribute in element.Attributes())
-                ParseAttribute(attribute);
+        foreach (var childElement in element.Elements())
+            ParseElement(childElement);
 
-            foreach (var childElement in element.Elements())
-                ParseElement(childElement);
-
-            ParseEnd();
-        }
-
-        protected abstract void ParseName(XName name);
-
-        protected abstract void ParseAttribute(XAttribute attribute);
-
-        protected abstract void ParseElement(XElement element);
-
-        protected abstract void ParseEnd();
+        ParseEnd();
     }
+
+    protected abstract void ParseName(XName name);
+
+    protected abstract void ParseAttribute(XAttribute attribute);
+
+    protected abstract void ParseElement(XElement element);
+
+    protected abstract void ParseEnd();
 }

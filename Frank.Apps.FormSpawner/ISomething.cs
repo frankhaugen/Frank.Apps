@@ -1,11 +1,10 @@
 ﻿using System;
 
-namespace Frank.Apps.FormSpawner
+namespace Frank.Apps.FormSpawner;
+
+public interface ISomething
 {
-    public interface ISomething
-    {
-        event EventHandler ValueChanged;
-        void Increment();
-        int GetCount();
-    }
+    event EventHandler ValueChanged;
+    void Increment();
+    int GetCount();
 }

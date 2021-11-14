@@ -1,38 +1,36 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
 
-namespace Frank.Apps.RuntimeExecution
+namespace Frank.Apps.RuntimeExecution;
+
+public class CodeExecuter
 {
-    public class CodeExecuter
+    private readonly ScriptOptions _scriptOptions;
+
+    public CodeExecuter()
     {
-        private readonly ScriptOptions _scriptOptions;
+        _scriptOptions = ScriptOptions.Default
+            .AddReferences(typeof(string).Assembly)
+            .AddImports("System");
+    }
 
-        public CodeExecuter()
-        {
-            _scriptOptions = ScriptOptions.Default
-                .AddReferences(typeof(string).Assembly)
-                .AddImports("System");
-        }
+    public async Task<string?> RoslynScriptingAsync(string? input = null, params Assembly[] assemblies)
+    {
+        var methodCode = @"return nameof(Exception);";
 
-        public async Task<string?> RoslynScriptingAsync(string? input = null, params Assembly[] assemblies)
-        {
-            var methodCode = @"return nameof(Exception);";
+        if (input is not null)
+            methodCode = input;
 
-            if (input is not null)
-                methodCode = input;
+        _scriptOptions.AddReferences(assemblies);
 
-            _scriptOptions.AddReferences(assemblies);
+        var script = CSharpScript.Create(methodCode, _scriptOptions);
 
-            var script = CSharpScript.Create(methodCode, _scriptOptions);
+        var state = await script.RunAsync();
 
-            var state = await script.RunAsync();
+        var result = state.ReturnValue as string;
 
-            var result = state.ReturnValue as string;
-
-            return result;
-        }
+        return result;
     }
 }
