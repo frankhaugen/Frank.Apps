@@ -8,14 +8,17 @@ namespace Frank.Apps.StarMap
     {
         private Grid _content = new();
 
-        public HostWindow(StarListPage starListPage, StarMapPage starMapPage)
+        public HostWindow(GraphicsPage graphicsPage, StarListPage starListPage, StarMapPage starMapPage)
         {
             MinWidth = 1024;
             MinHeight = 512;
+            MaxHeight = MinHeight * 2;
+            MaxWidth = MinWidth * 2;
+
             SizeToContent = SizeToContent.WidthAndHeight;
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-            _content.Children.Add(GetTabControl(starMapPage, starListPage));
+            _content.Children.Add(GetTabControl(graphicsPage, starMapPage, starListPage));
 
             Content = _content;
         }

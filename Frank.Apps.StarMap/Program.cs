@@ -27,6 +27,7 @@ namespace Frank.Apps.StarMap
 
                     services.AddScoped<StarListPage>();
                     services.AddScoped<StarMapPage>();
+                    services.AddScoped<GraphicsPage>();
 
                     services.AddScoped<TestWindow>();
                     services.AddScoped<HostWindow>();

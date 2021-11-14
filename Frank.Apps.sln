@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31410.357
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.AI.LanguageDetector", "Frank.Apps.AI.LanguageDetector\Frank.Apps.AI.LanguageDetector.csproj", "{EF81AE58-E043-4DB0-9C04-E7BEA965F7D7}"
 EndProject
@@ -68,7 +68,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.CodeGenerationEx
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.IrcTerminalClient", "Frank.Apps.IrcTerminalClient\Frank.Apps.IrcTerminalClient.csproj", "{C0E020B8-B8F6-4E5A-B1AB-938E511ACDD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.Apps.Loggers", "Frank.Apps.Loggers\Frank.Apps.Loggers.csproj", "{3C91196D-2B60-429D-B515-765CE52D6EC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.Loggers", "Frank.Apps.Loggers\Frank.Apps.Loggers.csproj", "{3C91196D-2B60-429D-B515-765CE52D6EC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.Apps.Graphics", "Frank.Apps.Graphics\Frank.Apps.Graphics.csproj", "{71523476-52A8-44E2-A9E2-125656873344}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -452,6 +454,18 @@ Global
 		{3C91196D-2B60-429D-B515-765CE52D6EC3}.Release|x64.Build.0 = Release|Any CPU
 		{3C91196D-2B60-429D-B515-765CE52D6EC3}.Release|x86.ActiveCfg = Release|Any CPU
 		{3C91196D-2B60-429D-B515-765CE52D6EC3}.Release|x86.Build.0 = Release|Any CPU
+		{71523476-52A8-44E2-A9E2-125656873344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71523476-52A8-44E2-A9E2-125656873344}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71523476-52A8-44E2-A9E2-125656873344}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{71523476-52A8-44E2-A9E2-125656873344}.Debug|x64.Build.0 = Debug|Any CPU
+		{71523476-52A8-44E2-A9E2-125656873344}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{71523476-52A8-44E2-A9E2-125656873344}.Debug|x86.Build.0 = Debug|Any CPU
+		{71523476-52A8-44E2-A9E2-125656873344}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71523476-52A8-44E2-A9E2-125656873344}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71523476-52A8-44E2-A9E2-125656873344}.Release|x64.ActiveCfg = Release|Any CPU
+		{71523476-52A8-44E2-A9E2-125656873344}.Release|x64.Build.0 = Release|Any CPU
+		{71523476-52A8-44E2-A9E2-125656873344}.Release|x86.ActiveCfg = Release|Any CPU
+		{71523476-52A8-44E2-A9E2-125656873344}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
