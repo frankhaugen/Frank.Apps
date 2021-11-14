@@ -40,6 +40,11 @@ namespace Frank.Apps.StarMap.Controls
             BackgroundColor = _backgroundColor;
 
             // draw lines
+            
+        }
+
+        private void DrawLines()
+        {
             for (int x = -4000; x <= 4000; x += 100)
             {
                 Line verticalLine = new Line

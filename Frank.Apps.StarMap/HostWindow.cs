@@ -8,7 +8,7 @@ namespace Frank.Apps.StarMap
     {
         private Grid _content = new();
 
-        public HostWindow(GraphicsPage graphicsPage, StarListPage starListPage, StarMapPage starMapPage)
+        public HostWindow(GamePage gamePage, GraphicsPage graphicsPage, StarListPage starListPage, StarMapPage starMapPage)
         {
             MinWidth = 1024;
             MinHeight = 512;
@@ -18,7 +18,7 @@ namespace Frank.Apps.StarMap
             SizeToContent = SizeToContent.WidthAndHeight;
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-            _content.Children.Add(GetTabControl(graphicsPage, starMapPage, starListPage));
+            _content.Children.Add(GetTabControl(gamePage, graphicsPage, starMapPage, starListPage));
 
             Content = _content;
         }

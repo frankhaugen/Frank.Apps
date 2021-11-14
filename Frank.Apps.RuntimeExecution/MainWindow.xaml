@@ -11,6 +11,7 @@
         <ScrollViewer MaxHeight="256" MinHeight="128" Width="512">
             <TextBox Name="Editor" AcceptsReturn="True" AcceptsTab="True" />
         </ScrollViewer>
+        <Canvas></Canvas>
         <Button Content="Execute" Click="Button_Click" Name="ExecuteButton"></Button>
     </StackPanel>
 </Window>
