@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,12 +16,11 @@ namespace Frank.Apps.StarMap.Pages;
 public class GamePage : Page
 {
     private readonly DispatcherTimer _dispatcherTimer;
-    private readonly GameSettings _gameSettings;
-    private readonly GameObjectSettings _thingSetting;
     private readonly Rectangle _rectangle;
     private readonly Canvas _canvas;
     private readonly Physics _physics;
     private readonly TextBox _textBox;
+    private readonly Stopwatch _stopwatch;
 
     public Color Color { get; }
     public Size Size { get; }
@@ -34,8 +34,9 @@ public class GamePage : Page
         _physics = new Physics();
         VerticalAlignment = VerticalAlignment.Center;
         HorizontalAlignment = HorizontalAlignment.Center;
-        TimeSpan = TimeSpan.FromSeconds(0.033);
+        TimeSpan = TimeSpan.FromSeconds(1 / 30);
         _textBox = new TextBox();
+
         _textBox.Background = new SolidColorBrush(Colors.Transparent);
         Canvas.SetLeft(_textBox, 1);
         Canvas.SetTop(_textBox, 1);
@@ -49,14 +50,13 @@ public class GamePage : Page
 
         _canvas = Get();
 
-        //_canvas.Background = new SolidColorBrush(Colors.DarkGreen);
-
         _canvas.Children.Add(_rectangle);
         _canvas.Children.Add(_textBox);
         var view = new Grid();
         view.Children.Add(_canvas);
         Content = view;
 
+        _stopwatch = Stopwatch.StartNew();
         _dispatcherTimer.Start();
     }
 
@@ -77,7 +77,7 @@ public class GamePage : Page
     {
         var currentPosition = GetPosition();
 
-        var newPosition = _physics.Trajectory(currentPosition, Counter, 45, 500);
+        var newPosition = _physics.Trajectory(currentPosition, Convert.ToSingle(_stopwatch.Elapsed.TotalSeconds), 45, 500);
         
         Canvas.SetLeft(_rectangle, newPosition.X.Multiply(0.01f) * -1);
         Canvas.SetTop(_rectangle, newPosition.Y.Multiply(0.01f) * -1);
@@ -117,7 +117,7 @@ public class GamePage : Page
             Background = new SolidColorBrush(Colors.MidnightBlue),
             SnapsToDevicePixels = true,
             RenderTransformOrigin = new Point(.5, .5),
-            LayoutTransform = new ScaleTransform(-1, 1, .5, -.5),
+            LayoutTransform = new ScaleTransform(-1, 1, -.5, .5),
         };
 
         return canvas;

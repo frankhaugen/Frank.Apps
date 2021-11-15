@@ -6,13 +6,12 @@ using Frank.Apps.StarMap.Controls;
 using Frank.Apps.StarMap.Repositories;
 using Frank.Apps.StarMap.Services;
 using Microsoft.EntityFrameworkCore;
-using Point = System.Windows.Point;
 
 namespace Frank.Apps.StarMap.Pages;
 
 public class StarMapPage : Page
 {
-    private Canvas _canvas;
+    private readonly Canvas _canvas;
 
     public StarMapPage(DataContext dataContext)
     {
