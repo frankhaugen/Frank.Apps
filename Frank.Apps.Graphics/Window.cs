@@ -22,6 +22,7 @@ public class Window : GameWindow
     }
 
     private readonly Positions _vertices = new(new Vector3(-0.5f, -0.5f, 0.0f), new Vector3(0.5f, -0.5f, 0.0f), new Vector3(0.5f, 0.5f, 0.0f));
+    private readonly Positions _vertices2 = new(new Vector3(-0.5f, -0.5f, 0.0f), new Vector3(0.5f, 0.5f, 0.0f), new Vector3(-0.5f, 0.5f, 0.0f));
 
     protected override void OnLoad()
     {
@@ -38,14 +39,25 @@ public class Window : GameWindow
 
         GL.ClearColor(Color4.Skyblue);
         GL.Clear(ClearBufferMask.ColorBufferBit);
-        
-        Something(_vertices, BufferTargetARB.ArrayBuffer, PrimitiveType.Triangles, BufferUsageARB.StaticDraw);
+
+        Draw(_vertices, BufferTargetARB.ArrayBuffer, PrimitiveType.Triangles, BufferUsageARB.StaticDraw);
+        Draw(_vertices2, BufferTargetARB.ArrayBuffer, PrimitiveType.Triangles, BufferUsageARB.StaticDraw);
 
         SwapBuffers();
         base.OnRenderFrame(e);
     }
 
-    private void Something(Positions positions, BufferTargetARB bufferTarget, PrimitiveType primitiveType, BufferUsageARB bufferUsage)
+    protected override void OnUpdateFrame(FrameEventArgs e)
+    {
+        if (KeyboardState.IsKeyDown(Keys.Escape))
+        {
+            Close();
+        }
+
+        base.OnUpdateFrame(e);
+    }
+
+    private void Draw(Positions positions, BufferTargetARB bufferTarget, PrimitiveType primitiveType, BufferUsageARB bufferUsage)
     {
         var vertexArray = GL.GenVertexArray();
         var verteciesBuffer = GL.GenBuffer();
@@ -63,16 +75,6 @@ public class Window : GameWindow
         GL.BindVertexArray(vertexArray);
         GL.DeleteVertexArray(vertexArray);
         GL.DeleteBuffer(verteciesBuffer);
-    }
-
-    protected override void OnUpdateFrame(FrameEventArgs e)
-    {
-        if (KeyboardState.IsKeyDown(Keys.Escape))
-        {
-            Close();
-        }
-
-        base.OnUpdateFrame(e);
     }
 }
 

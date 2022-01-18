@@ -29,6 +29,27 @@ public readonly record struct Positions(params Vector3[] Verticies)
     }
 }
 
+
+public readonly record struct Polygon(Vector3 Position1, Vector3 Position2, Vector3 Position3)
+{
+    public int GetCount() => GetVertices().Length;
+    public Vector3[] GetVertices() => new[] { Position1, Position2, Position3 };
+
+    public float[] GetVerticesAsFloats()
+    {
+        var output = new List<float>();
+
+        foreach (var (x, y, z) in GetVertices())
+        {
+            output.Add(x);
+            output.Add(y);
+            output.Add(z);
+        }
+
+        return output.ToArray();
+    }
+}
+
 public readonly record struct Vertex(Vector4 Position, Color4<Rgba> Color)
 {
     public int GetSize() => 4 * 2 * sizeof(float);

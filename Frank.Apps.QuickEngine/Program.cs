@@ -1,3 +1,4 @@
+using Frank.Apps.QuickEngine.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -14,6 +15,10 @@ public class Program
         Host.CreateDefaultBuilder(args)
             .ConfigureServices((hostContext, services) =>
             {
-                services.AddHostedService<Worker>();
+
+                services.Configure<GameOptions>(hostContext.Configuration.GetSection(nameof(GameOptions)));
+
+                services.AddSingleton<IGame, MainGame>();
+                services.AddHostedService<Runner>();
             });
 }
