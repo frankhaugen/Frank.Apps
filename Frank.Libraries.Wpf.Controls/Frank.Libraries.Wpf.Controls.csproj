@@ -1,19 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>WinExe</OutputType>
         <TargetFramework>net6.0-windows</TargetFramework>
-        <LangVersion>10.0</LangVersion>
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
-        <StartupObject>Frank.Apps.VisualNovel.Program</StartupObject>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="SimpleInjector" Version="5.3.3" />
+      <Compile Remove="NewFolder\**" />
+      <EmbeddedResource Remove="NewFolder\**" />
+      <None Remove="NewFolder\**" />
+      <Page Remove="NewFolder\**" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Assets\" />
+        <Folder Include="Input\" />
+        <Folder Include="Text\" />
+        <Folder Include="Code\" />
     </ItemGroup>
+
 </Project>

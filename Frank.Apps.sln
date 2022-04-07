@@ -46,6 +46,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.Loggers", "Frank
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frank.Apps.Graphics", "Frank.Apps.Graphics\Frank.Apps.Graphics.csproj", "{71523476-52A8-44E2-A9E2-125656873344}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.Libraries.Wpf.Controls", "Frank.Libraries.Wpf.Controls\Frank.Libraries.Wpf.Controls.csproj", "{8F75B6D6-2412-4053-BA33-77E9259A7435}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -284,6 +286,18 @@ Global
 		{71523476-52A8-44E2-A9E2-125656873344}.Release|x64.Build.0 = Release|Any CPU
 		{71523476-52A8-44E2-A9E2-125656873344}.Release|x86.ActiveCfg = Release|Any CPU
 		{71523476-52A8-44E2-A9E2-125656873344}.Release|x86.Build.0 = Release|Any CPU
+		{8F75B6D6-2412-4053-BA33-77E9259A7435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F75B6D6-2412-4053-BA33-77E9259A7435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F75B6D6-2412-4053-BA33-77E9259A7435}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8F75B6D6-2412-4053-BA33-77E9259A7435}.Debug|x64.Build.0 = Debug|Any CPU
+		{8F75B6D6-2412-4053-BA33-77E9259A7435}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8F75B6D6-2412-4053-BA33-77E9259A7435}.Debug|x86.Build.0 = Debug|Any CPU
+		{8F75B6D6-2412-4053-BA33-77E9259A7435}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F75B6D6-2412-4053-BA33-77E9259A7435}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F75B6D6-2412-4053-BA33-77E9259A7435}.Release|x64.ActiveCfg = Release|Any CPU
+		{8F75B6D6-2412-4053-BA33-77E9259A7435}.Release|x64.Build.0 = Release|Any CPU
+		{8F75B6D6-2412-4053-BA33-77E9259A7435}.Release|x86.ActiveCfg = Release|Any CPU
+		{8F75B6D6-2412-4053-BA33-77E9259A7435}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,8 +1,10 @@
 using Frank.Apps.QuickEngine.Configuration;
+using Frank.Apps.QuickEngine.Graphics;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Shapes;
 
 namespace Frank.Apps.QuickEngine;
 
@@ -13,6 +15,8 @@ public class MainGame : Game, IGame
 
     private readonly ILogger<MainGame> _logger;
     private readonly IOptions<GameOptions> _options;
+
+    private Camera _camera;
 
     private SpriteBatch _sprites;
     private SpriteFont _spriteFont;
@@ -36,6 +40,9 @@ public class MainGame : Game, IGame
         _sprites = new SpriteBatch(GraphicsDevice);
         _spriteFont = Content.Load<SpriteFont>("Text");
 
+
+        _camera = new Camera(GraphicsDevice.Viewport);
+
         base.LoadContent();
     }
 
@@ -44,6 +51,8 @@ public class MainGame : Game, IGame
     protected override void Update(GameTime gameTime)
     {
         Center = GraphicsDevice.Viewport.Bounds.Center.ToVector2();
+
+        _camera.UpdateCamera(GraphicsDevice.Viewport);
 
         base.Update(gameTime);
     }
@@ -54,6 +63,16 @@ public class MainGame : Game, IGame
 
         _sprites.Begin();
         _sprites.DrawString(_spriteFont, Center.ToString(), Center, Color.Black);
+
+
+        var a = new Vector2(20);
+        var b = Center - new Vector2(20);
+
+
+        _sprites.DrawString(_spriteFont, a.ToString(), a, Color.Black);
+        _sprites.DrawString(_spriteFont, b.ToString(), b, Color.Black);
+        _sprites.DrawLine(a, b, Color.AntiqueWhite);
+
         _sprites.End();
 
         base.Draw(gameTime);

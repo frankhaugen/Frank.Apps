@@ -10,11 +10,11 @@ public class BoardGenerator
     {
         var grid = new Grid();
 
-        for (int i = 0; i < x; i++)
+        for (var i = 0; i < x; i++)
         {
             grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
         }
-        for (int i = 0; i < y; i++)
+        for (var i = 0; i < y; i++)
         {
             grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
         }
@@ -26,9 +26,9 @@ public class BoardGenerator
     {
         CellIdentity[,] output = new CellIdentity[x, y];
 
-        for (int i = 0; i < x; i++)
+        for (var i = 0; i < x; i++)
         {
-            for (int j = 0; j < y; j++)
+            for (var j = 0; j < y; j++)
             {
                 output[i, j] = new CellIdentity(i, j);
             }
