@@ -1,0 +1,18 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+  </Folder>
+  <Project Path="Frank.Apps.AI.LanguageDetector/Frank.Apps.AI.LanguageDetector.csproj" />
+  <Project Path="Frank.Apps.AI.Visualizations/Frank.Apps.AI.Visualizations.csproj" />
+  <Project Path="Frank.Apps.Graphics/Frank.Apps.Graphics.csproj" />
+  <Project Path="Frank.Apps.InputDetector/Frank.Apps.InputDetector.csproj" />
+  <Project Path="Frank.Apps.IrcTerminalClient/Frank.Apps.IrcTerminalClient.csproj" />
+  <Project Path="Frank.Apps.RuntimeExecution/Frank.Apps.RuntimeExecution.csproj" />
+  <Project Path="Frank.Apps.StarMap/Frank.Apps.StarMap.csproj" />
+  <Project Path="Frank.Apps.XamlTools/Frank.Apps.XamlTools.csproj" />
+</Solution>
